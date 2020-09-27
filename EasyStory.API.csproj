@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -6,13 +6,12 @@
 
 
   <ItemGroup>
-    <Folder Include="Domain\" />
     <Folder Include="Domain\Models\" />
     <Folder Include="Domain\Persistence\" />
-    <Folder Include="Domain\Repositories\" />
-    <Folder Include="Domain\Services\" />
     <Folder Include="Domain\Persistence\Contexts\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
@@ -24,5 +23,6 @@
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.21" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="5.6.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="3.1.8" />
   </ItemGroup>
 </Project>

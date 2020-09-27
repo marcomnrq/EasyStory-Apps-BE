@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Domain",
+    "\\Domain\\Models",
+    "\\Domain\\Persistence",
+    "\\Domain\\Persistence\\Contexts",
+    "\\Extensions",
+    "\\Persistence"
+  ],
+  "PreviewInSolutionExplorer": false
+}

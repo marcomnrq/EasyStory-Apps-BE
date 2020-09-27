@@ -2,10 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using EasyStory.API.Domain.Persistence.Contexts;
+using EasyStory.API.Domain.Repositories;
+using EasyStory.API.Extensions;
+using EasyStory.API.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -34,10 +40,7 @@ namespace EasyStory.API
             });
 
             // Repositories
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IProductTagRepository, ProductTagRepository>();
-            services.AddScoped<ITagRepository, TagRepository>();
+            
 
             services.AddRouting(options => options.LowercaseUrls = true);
 
@@ -45,10 +48,7 @@ namespace EasyStory.API
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             // Services
-            services.AddScoped<ICategoryService, CategoryService>();
-            services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<IProductTagService, ProductTagService>();
-            services.AddScoped<ITagService, TagService>();
+           
 
 
             services.AddAutoMapper(typeof(Startup));

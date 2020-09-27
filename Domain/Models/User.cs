@@ -13,5 +13,6 @@ namespace EasyStory.API.Domain.Models
         public int SubscriptionPrice { get; set; }
 
         public IList<Post> Posts { get; set; } = new List<Post>();
+        public IList<Bookmark> Bookmarks { get; set; } = new List<Bookmark>();
     }
 }
