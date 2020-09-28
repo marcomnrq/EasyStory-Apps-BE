@@ -1,5 +1,5 @@
 ﻿using EasyStory.API.Domain.Persistence.Contexts;
-using EasyStory.API.Domain.Repositories
+using EasyStory.API.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
