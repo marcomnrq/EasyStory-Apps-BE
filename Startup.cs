@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using EasyStory.API.Domain;
+using EasyStory.API.Services;
 using EasyStory.API.Domain.Persistence.Contexts;
 using EasyStory.API.Domain.Repositories;
+using EasyStory.API.Domain.Services;
+using EasyStory.API.Persistence.Repositories;
 using EasyStory.API.Extensions;
 using EasyStory.API.Persistence;
 using Microsoft.AspNetCore.Builder;
@@ -40,7 +44,7 @@ namespace EasyStory.API
             });
 
             // Repositories
-            
+            services.AddScoped<ICommentRepository, CommentRepository>();
 
             services.AddRouting(options => options.LowercaseUrls = true);
 
@@ -48,7 +52,7 @@ namespace EasyStory.API
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             // Services
-           
+            services.AddScoped<ICommentService, CommentService>();
 
 
             services.AddAutoMapper(typeof(Startup));
@@ -77,6 +81,11 @@ namespace EasyStory.API
             });
 
             app.UseCustomSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("https://localhost:44346/api-docs/v1/swagger.json", "My API V1");
+
+            });
         }
     }
 }

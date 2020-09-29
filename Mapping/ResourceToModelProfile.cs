@@ -1,16 +1,17 @@
-﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
+using AutoMapper;
+using EasyStory.API.Domain.Models;
+using EasyStory.API.Extensions;
+using EasyStory.API.Resources;
 
 namespace EasyStory.API.Mapping
 {
-    public class ResourceToModelProfile<T,G>:Profile
+    public class ResourceToModelProfile : Profile
     {
         public ResourceToModelProfile()
         {
-            CreateMap<T, G>();
+            CreateMap<SaveCommentResource, Comment>();
+
         }
     }
 }

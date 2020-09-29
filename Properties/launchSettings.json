@@ -20,8 +20,8 @@
     "EasyStory.API": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      "launchUrl": "api-docs/v1",
+      "applicationUrl": "https://localhost:4436;http://localhost:4436",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
