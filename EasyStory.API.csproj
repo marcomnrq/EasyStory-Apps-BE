@@ -10,8 +10,6 @@
     <Folder Include="Domain\Persistence\" />
     <Folder Include="Domain\Persistence\Contexts\" />
     <Folder Include="Extensions\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />

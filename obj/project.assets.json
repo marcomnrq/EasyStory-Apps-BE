@@ -6798,19 +6798,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\danie\\.nuget\\packages\\": {}
+    "C:\\Users\\Goncho\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\danie\\Downloads\\EasyStory-Apps-BE\\EasyStory.API.csproj",
+      "projectUniqueName": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE-develop\\EasyStory.API.csproj",
       "projectName": "EasyStory.API",
-      "projectPath": "C:\\Users\\danie\\Downloads\\EasyStory-Apps-BE\\EasyStory.API.csproj",
-      "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\danie\\Downloads\\EasyStory-Apps-BE\\obj\\",
+      "projectPath": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE-develop\\EasyStory.API.csproj",
+      "packagesPath": "C:\\Users\\Goncho\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE-develop\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Goncho\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6893,7 +6893,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
