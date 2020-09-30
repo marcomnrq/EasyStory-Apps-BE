@@ -11,6 +11,7 @@ namespace EasyStory.API.Domain.Persistence.Contexts
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostHashtag> PostHashtags { get; set; }
         public DbSet<Hashtag>Hashtags { get; set; }
+        public DbSet<Bookmark> Bookmarks { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -30,6 +31,7 @@ namespace EasyStory.API.Domain.Persistence.Contexts
             builder.Entity<User>().Property(p => p.SubscriptionPrice).IsRequired();
             builder.Entity<User>().HasMany(p => p.Posts).WithOne(p => p.User).HasForeignKey(p =>p.UserId);
             builder.Entity<User>().HasMany(p => p.Bookmarks).WithOne(p => p.User).HasForeignKey(p => p.UserId);
+            
             //Comment Entity
             builder.Entity<Comment>().ToTable("Comments");
             builder.Entity<Comment>().HasKey(p => p.Id);

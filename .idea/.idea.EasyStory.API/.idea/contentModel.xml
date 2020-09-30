@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\uriel\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\uriel\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_EasyStory.API.-1148725383.00" t="ExcludeRecursive" />
+    <e p="C:\Users\uriel\Documents\Proyectos_Github\EasyStory-Apps-BE" t="IncludeRecursive">
+      <e p="appsettings.Development.json" t="Include" />
+      <e p="appsettings.json" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Controllers" t="Include">
+        <e p="BookmarksController.cs" t="Include" />
+        <e p="WeatherForecastController.cs" t="Include" />
+      </e>
+      <e p="Domain" t="Include">
+        <e p="Models" t="Include">
+          <e p="Bookmark.cs" t="Include" />
+          <e p="Comment.cs" t="Include" />
+          <e p="Hashtag.cs" t="Include" />
+          <e p="Post.cs" t="Include" />
+          <e p="PostHashtag.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+        </e>
+        <e p="Persistence" t="Include">
+          <e p="Contexts" t="Include">
+            <e p="AppDbContext.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Repositories" t="Include">
+          <e p="IBookmarkRepository.cs" t="Include" />
+          <e p="IUnitOfWork.cs" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="Communications" t="Include">
+            <e p="BaseResponse.cs" t="Include" />
+            <e p="BookmarkResponse.cs" t="Include" />
+          </e>
+          <e p="IBookmarkService.cs" t="Include" />
+        </e>
+      </e>
+      <e p="EasyStory.API.csproj" t="IncludeRecursive" />
+      <e p="EasyStory.API.sln" t="IncludeFlat" />
+      <e p="Extensions" t="Include">
+        <e p="MiddlewareExtensions.cs" t="Include" />
+        <e p="ModelBuilderExtensions.cs" t="Include" />
+        <e p="ModelStateExtensions.cs" t="Include" />
+        <e p="StringExtensions.cs" t="Include" />
+      </e>
+      <e p="Mapping" t="Include">
+        <e p="ModelToResourceProfile.cs" t="Include" />
+        <e p="ResourceToModelProfile.cs" t="Include" />
+      </e>
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp3.1" t="Include">
+            <e p="EasyStory.API.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Persistence" t="Include">
+        <e p="Repositories" t="Include">
+          <e p="BaseRepository.cs" t="Include" />
+          <e p="BookmarkRepository.cs" t="Include" />
+          <e p="UnitOfWork.cs" t="Include" />
+        </e>
+        <e p="UnitOfWork.cs" t="Include" />
+      </e>
+      <e p="Program.cs" t="Include" />
+      <e p="Properties" t="Include">
+        <e p="launchSettings.json" t="Include" />
+      </e>
+      <e p="Resources" t="Include">
+        <e p="BookmarkResource.cs" t="Include" />
+        <e p="SaveBookmarkResource.cs" t="Include" />
+      </e>
+      <e p="Services" t="Include">
+        <e p="BookmarkService.cs" t="Include" />
+      </e>
+      <e p="Startup.cs" t="Include" />
+      <e p="WeatherForecast.cs" t="Include" />
+    </e>
+  </component>
+</project>

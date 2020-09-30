@@ -19,6 +19,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using UnitOfWork = EasyStory.API.Persistence.UnitOfWork;
 
 namespace EasyStory.API
 {
@@ -46,6 +47,7 @@ namespace EasyStory.API
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IHashtagRepository, HashtagRepository>();
+            services.AddScoped<IBookmarkRepository, BookmarkRepository>();
 
             services.AddRouting(options => options.LowercaseUrls = true);
 
@@ -56,7 +58,7 @@ namespace EasyStory.API
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IHashtagService, HashtagService>();
-
+            services.AddScoped<IBookmarkService, BookmarkService>();
 
             services.AddAutoMapper(typeof(Startup));
 
