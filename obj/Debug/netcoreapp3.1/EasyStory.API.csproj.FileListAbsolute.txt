@@ -64,6 +64,9 @@ C:\Users\danie\Downloads\EasyStory-Apps-BE\obj\Debug\netcoreapp3.1\EasyStory.API
 C:\Users\Goncho\Desktop\EasyStory-Apps-BE-develop\obj\Debug\netcoreapp3.1\EasyStory.API.csprojAssemblyReference.cache
 C:\Users\Goncho\Desktop\EasyStory-Apps-BE-develop\obj\Debug\netcoreapp3.1\EasyStory.API.AssemblyInfoInputs.cache
 C:\Users\Goncho\Desktop\EasyStory-Apps-BE-develop\obj\Debug\netcoreapp3.1\EasyStory.API.AssemblyInfo.cs
+C:\Users\Goncho\Desktop\EasyStory-Apps-BE-develop\obj\Debug\netcoreapp3.1\EasyStory.API.csproj.CoreCompileInputs.cache
+C:\Users\Goncho\Desktop\EasyStory-Apps-BE-develop\obj\Debug\netcoreapp3.1\EasyStory.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Goncho\Desktop\EasyStory-Apps-BE-develop\obj\Debug\netcoreapp3.1\EasyStory.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Goncho\Desktop\EasyStory-Apps-BE-develop\obj\Debug\netcoreapp3.1\EasyStory.API.dll
 C:\Users\Goncho\Desktop\EasyStory-Apps-BE-develop\obj\Debug\netcoreapp3.1\EasyStory.API.pdb
 C:\Users\Goncho\Desktop\EasyStory-Apps-BE-develop\bin\Debug\netcoreapp3.1\appsettings.Development.json
