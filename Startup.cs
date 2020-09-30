@@ -45,6 +45,7 @@ namespace EasyStory.API
             // Repositories
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IHashtagRepository, HashtagRepository>();
 
             services.AddRouting(options => options.LowercaseUrls = true);
 
@@ -54,6 +55,8 @@ namespace EasyStory.API
             // Services
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IHashtagService, HashtagService>();
+
 
             services.AddAutoMapper(typeof(Startup));
 
@@ -72,19 +75,19 @@ namespace EasyStory.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+           
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-
+            
             app.UseCustomSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("https://localhost:44346/api-docs/v1/swagger.json", "My API V1");
-
+               
             });
         }
     }

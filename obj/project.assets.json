@@ -6821,7 +6821,10 @@
       "MySql.Data.EntityFramework >= 8.0.21",
       "MySql.Data.EntityFrameworkCore >= 8.0.21",
       "Swashbuckle.AspNetCore >= 5.6.3",
-      "Swashbuckle.AspNetCore.Annotations >= 5.6.3"
+      "Swashbuckle.AspNetCore.Annotations >= 5.6.3",
+      "Swashbuckle.AspNetCore.Swagger >= 5.6.3",
+      "Swashbuckle.AspNetCore.SwaggerGen >= 5.6.3",
+      "Swashbuckle.AspNetCore.SwaggerUI >= 5.6.3"
     ]
   },
   "packageFolders": {
@@ -6830,11 +6833,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API.csproj",
+      "projectUniqueName": "C:\\Users\\danie\\Desktop\\Repositorios\\EasyStory-Apps-BE\\EasyStory.API.csproj",
       "projectName": "EasyStory.API",
-      "projectPath": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API.csproj",
-      "packagesPath": "C:\\Users\\Goncho\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\obj\\",
+      "projectPath": "C:\\Users\\danie\\Desktop\\Repositorios\\EasyStory-Apps-BE\\EasyStory.API.csproj",
+      "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\danie\\Desktop\\Repositorios\\EasyStory-Apps-BE\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Goncho\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6902,6 +6905,18 @@
             "version": "[5.6.3, )"
           },
           "Swashbuckle.AspNetCore.Annotations": {
+            "target": "Package",
+            "version": "[5.6.3, )"
+          },
+          "Swashbuckle.AspNetCore.Swagger": {
+            "target": "Package",
+            "version": "[5.6.3, )"
+          },
+          "Swashbuckle.AspNetCore.SwaggerGen": {
+            "target": "Package",
+            "version": "[5.6.3, )"
+          },
+          "Swashbuckle.AspNetCore.SwaggerUI": {
             "target": "Package",
             "version": "[5.6.3, )"
           }

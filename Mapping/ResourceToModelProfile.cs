@@ -14,6 +14,7 @@ namespace EasyStory.API.Mapping
         {
             CreateMap<SavePostResource,Post>();
             CreateMap<SaveUserResource, User>();
+            CreateMap<SaveHashtagResource,Hashtag>();
         }
     }
 }

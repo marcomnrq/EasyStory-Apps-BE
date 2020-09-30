@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5WR6Yc9mWrQQ6vM/lggCOWJRmJETUCU00vsDF4+iVvZiTFWfuIKRQCDLe1uSs6uwPyJEfkcNYXhObhzFtJQ2eA==",
+  "dgSpecHash": "Mqv6sGqw4mmyT7R7jlkZ/jJ11b43cqk61AdQc27nHmabx+kFjS1zQFUkuDloPXS346DdxroWxv9Oyx69ySESBA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API.csproj",
+  "projectFilePath": "C:\\Users\\danie\\Desktop\\Repositorios\\EasyStory-Apps-BE\\EasyStory.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Goncho\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\Goncho\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
