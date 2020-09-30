@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API.csproj": {}
+    "/Users/marco/Documents/GitHub/EasyStory-Apps-BE/EasyStory.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API.csproj": {
+    "/Users/marco/Documents/GitHub/EasyStory-Apps-BE/EasyStory.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API.csproj",
+        "projectUniqueName": "/Users/marco/Documents/GitHub/EasyStory-Apps-BE/EasyStory.API.csproj",
         "projectName": "EasyStory.API",
-        "projectPath": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API.csproj",
-        "packagesPath": "C:\\Users\\Goncho\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\obj\\",
+        "projectPath": "/Users/marco/Documents/GitHub/EasyStory-Apps-BE/EasyStory.API.csproj",
+        "packagesPath": "/Users/marco/.nuget/packages/",
+        "outputPath": "/Users/marco/Documents/GitHub/EasyStory-Apps-BE/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Goncho\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/marco/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -123,7 +119,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
         }
       }
     }

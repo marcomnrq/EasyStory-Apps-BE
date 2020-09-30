@@ -21,7 +21,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using UnitOfWork = EasyStory.API.Persistence.UnitOfWork;
 
 namespace EasyStory.API
 {
@@ -91,11 +90,10 @@ namespace EasyStory.API
             });
             
             app.UseCustomSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("https://localhost:44346/api-docs/v1/swagger.json", "My API V1");
-               
-            });
+            app.UseSwaggerUI(
+                c => c.SwaggerEndpoint("/swagger/V1/swagger.json", "EasyStory Api"));
+
+
         }
     }
 }

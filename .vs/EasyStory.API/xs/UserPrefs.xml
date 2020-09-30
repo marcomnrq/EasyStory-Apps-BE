@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{2F25DFF6-ADC5-43D4-9842-1DBF0087A53C}|Default">
   <MonoDevelop.Ide.ItemProperties.EasyStory.API PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Properties/launchSettings.json">
+  <MonoDevelop.Ide.Workbench ActiveDocument=".gitignore">
     <Files>
       <File FileName="Resources/CommentResource.cs" Line="7" Column="42" />
       <File FileName="Domain/Models/Comment.cs" />
@@ -10,7 +10,7 @@
       <File FileName="Persistence/Repositories/CommentRepository.cs" />
       <File FileName="Services/CommentService.cs" />
       <File FileName="Controllers/CommentsController.cs" />
-      <File FileName="Startup.cs" />
+      <File FileName="Startup.cs" Line="23" Column="36" />
       <File FileName="Extensions/MiddlewareExtensions.cs" />
       <File FileName="Domain/Repositories/ICommentRepository.cs" />
       <File FileName="Domain/Services/ICommentService.cs" />
@@ -21,6 +21,7 @@
       <File FileName="appsettings.json" />
       <File FileName="WeatherForecast.cs" />
       <File FileName="Properties/launchSettings.json" Line="23" Column="32" />
+      <File FileName=".gitignore" Line="37" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -41,9 +42,8 @@
               <Node name="Persistence" expanded="True">
                 <Node name="Repositories" expanded="True" />
               </Node>
-              <Node name="Properties" expanded="True">
-                <Node name="launchSettings.json" selected="True" />
-              </Node>
+              <Node name="Properties" expanded="True" />
+              <Node name=".gitignore" selected="True" />
               <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
