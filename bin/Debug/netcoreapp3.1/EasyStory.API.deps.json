@@ -10,7 +10,7 @@
       "NETCOREAPP",
       "NETCOREAPP3_1"
     ],
-    "languageVersion": "8.0",
+    "languageVersion": "",
     "platform": "",
     "allowUnsafe": false,
     "warningsAsErrors": false,
@@ -30,6 +30,8 @@
           "Microsoft.EntityFrameworkCore.Analyzers": "3.1.8",
           "Microsoft.EntityFrameworkCore.InMemory": "3.1.8",
           "Microsoft.EntityFrameworkCore.Relational": "3.1.8",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.8",
+          "Microsoft.Extensions.Logging.Abstractions": "3.1.8",
           "Microsoft.OpenApi": "1.2.3",
           "MySql.Data.EntityFrameworkCore": "8.0.21",
           "Swashbuckle.AspNetCore": "5.6.3",
