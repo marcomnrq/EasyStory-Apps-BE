@@ -31,6 +31,7 @@
           "Microsoft.EntityFrameworkCore.InMemory": "3.1.8",
           "Microsoft.EntityFrameworkCore.Relational": "3.1.8",
           "Microsoft.OpenApi": "1.2.3",
+          "MySql.Data.EntityFramework": "8.0.21",
           "MySql.Data.EntityFrameworkCore": "8.0.21",
           "Swashbuckle.AspNetCore": "5.6.3",
           "Swashbuckle.AspNetCore.Annotations": "5.6.3",
@@ -711,6 +712,17 @@
           "lib/netstandard2.1/MySql.Data.dll": {},
           "lib/netstandard2.1/Ubiety.Dns.Core.dll": {},
           "lib/netstandard2.1/Zstandard.Net.dll": {}
+        }
+      },
+      "MySql.Data.EntityFramework/8.0.21": {
+        "runtime": {
+          "lib/net452/MySql.Data.EntityFramework.dll": {
+            "assemblyVersion": "8.0.21.0",
+            "fileVersion": "8.0.21.0"
+          }
+        },
+        "compile": {
+          "lib/net452/MySql.Data.EntityFramework.dll": {}
         }
       },
       "MySql.Data.EntityFrameworkCore/8.0.21": {
@@ -3503,6 +3515,13 @@
       "sha512": "sha512-mKARhpOOn4rQ6PPdY98UVHq00v/4vDCfluR2Xrr5VNQgtyVzjzorcvQjYArHLRwKLEkBRxgHWRfg0+hS96FI3Q==",
       "path": "mysql.data/8.0.21",
       "hashPath": "mysql.data.8.0.21.nupkg.sha512"
+    },
+    "MySql.Data.EntityFramework/8.0.21": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pwwNCrYSMPWeKf+5V97vi1VTHnIewoxLdsKM1T+rSv29d+ZBA8oaett0dp5MmcnLm+9ehEWF3KSsKVpOBfkV5A==",
+      "path": "mysql.data.entityframework/8.0.21",
+      "hashPath": "mysql.data.entityframework.8.0.21.nupkg.sha512"
     },
     "MySql.Data.EntityFrameworkCore/8.0.21": {
       "type": "package",

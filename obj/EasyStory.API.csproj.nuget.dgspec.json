@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\danie\\Downloads\\EasyStory-Apps-BE\\EasyStory.API.csproj": {}
+    "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\danie\\Downloads\\EasyStory-Apps-BE\\EasyStory.API.csproj": {
+    "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\danie\\Downloads\\EasyStory-Apps-BE\\EasyStory.API.csproj",
+        "projectUniqueName": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API.csproj",
         "projectName": "EasyStory.API",
-        "projectPath": "C:\\Users\\danie\\Downloads\\EasyStory-Apps-BE\\EasyStory.API.csproj",
-        "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\danie\\Downloads\\EasyStory-Apps-BE\\obj\\",
+        "projectPath": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API.csproj",
+        "packagesPath": "C:\\Users\\Goncho\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Goncho\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -65,6 +65,10 @@
             "Microsoft.OpenApi": {
               "target": "Package",
               "version": "[1.2.3, )"
+            },
+            "MySql.Data.EntityFramework": {
+              "target": "Package",
+              "version": "[8.0.21, )"
             },
             "MySql.Data.EntityFrameworkCore": {
               "target": "Package",

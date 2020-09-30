@@ -59,6 +59,9 @@ namespace EasyStory.API.Domain.Persistence.Contexts
                 .HasMany(p => p.Comments)
                 .WithOne(p => p.Post)
                 .HasForeignKey(p => p.PostId);
+            
+                                  
+
 
             // Hashtag Entity
             builder.Entity<Hashtag>().ToTable("Hashtags");
