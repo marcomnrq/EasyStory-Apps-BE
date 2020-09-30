@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using EasyStory.API.Domain.Models;
+using EasyStory.API.Extensions;
 using EasyStory.API.Resources;
 
 namespace EasyStory.API.Mapping
@@ -16,6 +14,8 @@ namespace EasyStory.API.Mapping
             CreateMap<User, UserResource>();
             CreateMap<Hashtag,HashtagResource>();
             CreateMap<Bookmark, BookmarkResource>();
+            CreateMap<Comment, CommentResource>();
+
         }
     }
 }

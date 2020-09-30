@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using EasyStory.API.Domain;
+using EasyStory.API.Services;
 using EasyStory.API.Domain.Persistence.Contexts;
 using EasyStory.API.Domain.Repositories;
 using EasyStory.API.Domain.Services;
@@ -48,6 +50,7 @@ namespace EasyStory.API
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IHashtagRepository, HashtagRepository>();
             services.AddScoped<IBookmarkRepository, BookmarkRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
 
             services.AddRouting(options => options.LowercaseUrls = true);
 
@@ -59,6 +62,8 @@ namespace EasyStory.API
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IHashtagService, HashtagService>();
             services.AddScoped<IBookmarkService, BookmarkService>();
+            services.AddScoped<ICommentService, CommentService>();
+
 
             services.AddAutoMapper(typeof(Startup));
 

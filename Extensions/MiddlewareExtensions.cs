@@ -13,7 +13,7 @@ namespace EasyStory.API.Extensions
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "Easy Story API",
+                    Title = "EasyStory API",
                     Version = "v1",
                     Description = "EasyStory RESTful API"
                 });
@@ -31,7 +31,7 @@ namespace EasyStory.API.Extensions
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/api-docs/v1/swagger.json", "EasyStory");
+                c.SwaggerEndpoint("/api-docs/v1/swagger.json", "EasyStory API V1");
                 c.RoutePrefix = "api-docs/v1";
             });
             return app;

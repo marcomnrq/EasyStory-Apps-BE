@@ -1,14 +1,50 @@
 ﻿<Properties StartupConfiguration="{2F25DFF6-ADC5-43D4-9842-1DBF0087A53C}|Default">
   <MonoDevelop.Ide.ItemProperties.EasyStory.API PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Properties/launchSettings.json">
+    <Files>
+      <File FileName="Resources/CommentResource.cs" Line="7" Column="42" />
+      <File FileName="Domain/Models/Comment.cs" />
+      <File FileName="Resources/SaveCommentResource.cs" />
+      <File FileName="Mapping/ModelToResourceProfile.cs" />
+      <File FileName="Mapping/ResourceToModelProfile.cs" />
+      <File FileName="Persistence/Repositories/CommentRepository.cs" />
+      <File FileName="Services/CommentService.cs" />
+      <File FileName="Controllers/CommentsController.cs" />
+      <File FileName="Startup.cs" />
+      <File FileName="Extensions/MiddlewareExtensions.cs" />
+      <File FileName="Domain/Repositories/ICommentRepository.cs" />
+      <File FileName="Domain/Services/ICommentService.cs" />
+      <File FileName="Extensions/ModelBuilderExtensions.cs" />
+      <File FileName="Extensions/StringExtensions.cs" />
+      <File FileName="appsettings.Development.json" />
+      <File FileName="Program.cs" />
+      <File FileName="appsettings.json" />
+      <File FileName="WeatherForecast.cs" />
+      <File FileName="Properties/launchSettings.json" Line="23" Column="32" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="EasyStory.API" expanded="True">
             <Node name="EasyStory.API" expanded="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" selected="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Domain" expanded="True">
+                <Node name="Models" expanded="True" />
+                <Node name="Persistence" expanded="True">
+                  <Node name="Contexts" expanded="True" />
+                </Node>
+                <Node name="Repositories" expanded="True" />
+                <Node name="Services" expanded="True" />
               </Node>
+              <Node name="Extensions" expanded="True" />
+              <Node name="Mapping" expanded="True" />
+              <Node name="Persistence" expanded="True">
+                <Node name="Repositories" expanded="True" />
+              </Node>
+              <Node name="Properties" expanded="True">
+                <Node name="launchSettings.json" selected="True" />
+              </Node>
+              <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>

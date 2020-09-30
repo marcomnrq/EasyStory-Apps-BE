@@ -12,6 +12,7 @@ namespace EasyStory.API.Domain.Persistence.Contexts
         public DbSet<PostHashtag> PostHashtags { get; set; }
         public DbSet<Hashtag>Hashtags { get; set; }
         public DbSet<Bookmark> Bookmarks { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
