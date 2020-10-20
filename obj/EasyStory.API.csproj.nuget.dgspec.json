@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\uriel\\Documents\\Proyectos_Github\\EasyStory-Apps-BE\\EasyStory.API.csproj": {}
+    "C:\\Users\\uriel\\Documents\\Proyectos_Github\\AppsWeb\\EasyStory.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\uriel\\Documents\\Proyectos_Github\\EasyStory-Apps-BE\\EasyStory.API.csproj": {
+    "C:\\Users\\uriel\\Documents\\Proyectos_Github\\AppsWeb\\EasyStory.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\uriel\\Documents\\Proyectos_Github\\EasyStory-Apps-BE\\EasyStory.API.csproj",
+        "projectUniqueName": "C:\\Users\\uriel\\Documents\\Proyectos_Github\\AppsWeb\\EasyStory.API.csproj",
         "projectName": "EasyStory.API",
-        "projectPath": "C:\\Users\\uriel\\Documents\\Proyectos_Github\\EasyStory-Apps-BE\\EasyStory.API.csproj",
+        "projectPath": "C:\\Users\\uriel\\Documents\\Proyectos_Github\\AppsWeb\\EasyStory.API.csproj",
         "packagesPath": "C:\\Users\\uriel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\uriel\\Documents\\Proyectos_Github\\EasyStory-Apps-BE\\obj\\",
+        "outputPath": "C:\\Users\\uriel\\Documents\\Proyectos_Github\\AppsWeb\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -108,7 +108,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

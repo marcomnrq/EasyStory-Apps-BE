@@ -1,12 +1,13 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Controllers",
     "\\Domain",
     "\\Domain\\Models",
     "\\Domain\\Persistence",
-    "\\Domain\\Persistence\\Contexts",
-    "\\Extensions",
-    "\\Persistence"
+    "\\Domain\\Repositories",
+    "\\Domain\\Services"
   ],
+  "SelectedNode": "\\Domain\\Repositories",
   "PreviewInSolutionExplorer": false
 }

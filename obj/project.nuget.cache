@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "i9SuQ25R+FNko20Q73GLdj2KcsUgHbqcFkPR4SRGU9rYq7GXu4ETvqZrYt51nkpWm7LE7vaVdQsaF4Zphuk+ww==",
+  "dgSpecHash": "A6o4PHosu1yyAgUsAU5wOP6Wf6GgXn2i/boSOtsc1cnDwYGB8B1JYm9joGIHWXTgc7fpKejuE1D+r/XDOx5+Fw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\uriel\\Documents\\Proyectos_Github\\EasyStory-Apps-BE\\EasyStory.API.csproj",
+  "projectFilePath": "C:\\Users\\uriel\\Documents\\Proyectos_Github\\AppsWeb\\EasyStory.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\uriel\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\uriel\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
