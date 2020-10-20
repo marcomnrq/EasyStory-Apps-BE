@@ -121,6 +121,10 @@ C:\Users\danie\Desktop\Repositorios\EasyStory-Apps-BE\obj\Debug\netcoreapp3.1\st
 C:\Users\danie\Desktop\Repositorios\EasyStory-Apps-BE\obj\Debug\netcoreapp3.1\EasyStory.API.dll
 C:\Users\danie\Desktop\Repositorios\EasyStory-Apps-BE\obj\Debug\netcoreapp3.1\EasyStory.API.pdb
 C:\Users\danie\Desktop\Repositorios\EasyStory-Apps-BE\obj\Debug\netcoreapp3.1\EasyStory.API.genruntimeconfig.cache
+C:\Users\danie\Desktop\Repositorios\EasyStory-Apps-BE\bin\Debug\netcoreapp3.1\nunit.framework.dll
+C:\Users\danie\Desktop\Repositorios\EasyStory-Apps-BE\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\danie\Desktop\Repositorios\EasyStory-Apps-BE\bin\Debug\netcoreapp3.1\Moq.dll
 C:\Users\danie\Desktop\Repositorios\EasyStory-Apps-BE\obj\Debug\netcoreapp3.1\EasyStory.API.csproj.CoreCompileInputs.cache
 C:\Users\danie\Desktop\Repositorios\EasyStory-Apps-BE\obj\Debug\netcoreapp3.1\EasyStory.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\danie\Desktop\Repositorios\EasyStory-Apps-BE\obj\Debug\netcoreapp3.1\EasyStory.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\danie\Desktop\Repositorios\EasyStory-Apps-BE\bin\Debug\netcoreapp3.1\FluentAssertions.dll
