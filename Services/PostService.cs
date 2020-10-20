@@ -48,10 +48,9 @@ namespace EasyStory.API.Services
             return await _postRepository.ListAsync();
         }
 
-        public Task<IEnumerable<Post>> ListByUserIdAsync(long userId)
+        public async Task<IEnumerable<Post>> ListByUserIdAsync(long userId)
         {
-            // para implementar esta sección se necesita la implementación del servicio  de hashtag, despues realizar su unión en el nuevo post hashtag
-            throw new NotImplementedException();
+            return await _postRepository.ListByUserIdAsync(userId);
         }
 
         public async Task<PostResponse> SavePostAsync(Post post, long userId)
@@ -70,8 +69,9 @@ namespace EasyStory.API.Services
             }
         }
 
-        public async Task<PostResponse> UpdatePostAsync(long id, Post post)
+        public async Task<PostResponse> UpdatePostAsync(long id, Post post, long userId)
         {
+            post.UserId = userId;
             var existingPost = await _postRepository.FindById(id);
             if (existingPost == null)
                 return new PostResponse("Post not found");

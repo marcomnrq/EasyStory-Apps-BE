@@ -30,6 +30,12 @@ namespace EasyStory.API.Persistence.Repositories
             return await _context.Posts.ToListAsync();
         }
 
+        public async Task<IEnumerable<Post>> ListByUserIdAsync(long userId) =>
+            await _context.Posts
+                .Where(p => p.UserId == userId)
+                .Include(p => p.User)
+                .ToListAsync();
+
         public void Remove(Post post)
         {
             _context.Posts.Remove(post);

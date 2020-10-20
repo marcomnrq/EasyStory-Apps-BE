@@ -1,7 +1,13 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyStory.API", "EasyStory.API.csproj", "{2F25DFF6-ADC5-43D4-9842-1DBF0087A53C}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyStory.API", "EasyStory.API.csproj", "{2F25DFF6-ADC5-43D4-9842-1DBF0087A53C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyStory.API.Test", "..\EasyStory.API.Test\EasyStory.API.Test.csproj", "{894DD35F-0A4E-4786-9812-4AE66A286DFA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2F25DFF6-ADC5-43D4-9842-1DBF0087A53C} = {2F25DFF6-ADC5-43D4-9842-1DBF0087A53C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,5 +19,15 @@ Global
 		{2F25DFF6-ADC5-43D4-9842-1DBF0087A53C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F25DFF6-ADC5-43D4-9842-1DBF0087A53C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F25DFF6-ADC5-43D4-9842-1DBF0087A53C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{894DD35F-0A4E-4786-9812-4AE66A286DFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{894DD35F-0A4E-4786-9812-4AE66A286DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{894DD35F-0A4E-4786-9812-4AE66A286DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{894DD35F-0A4E-4786-9812-4AE66A286DFA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34F50CB5-5DC9-4380-B233-FBA957B5B028}
 	EndGlobalSection
 EndGlobal
