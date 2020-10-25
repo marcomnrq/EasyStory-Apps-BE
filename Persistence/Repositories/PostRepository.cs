@@ -29,13 +29,19 @@ namespace EasyStory.API.Persistence.Repositories
         {
             return await _context.Posts.ToListAsync();
         }
+<<<<<<< Updated upstream:Persistence/Repositories/PostRepository.cs
 
+=======
+>>>>>>> Stashed changes:EasyStory.API/Persistence/Repositories/PostRepository.cs
         public async Task<IEnumerable<Post>> ListByUserIdAsync(long userId) =>
             await _context.Posts
                 .Where(p => p.UserId == userId)
                 .Include(p => p.User)
                 .ToListAsync();
+<<<<<<< Updated upstream:Persistence/Repositories/PostRepository.cs
 
+=======
+>>>>>>> Stashed changes:EasyStory.API/Persistence/Repositories/PostRepository.cs
         public void Remove(Post post)
         {
             _context.Posts.Remove(post);

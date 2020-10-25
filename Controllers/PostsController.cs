@@ -79,7 +79,11 @@ namespace EasyStory.API.Controllers
         }
         [SwaggerResponse(200, "Post was updated", typeof(PostResource))]
         [HttpPut("posts/{id}")]
+<<<<<<< Updated upstream:Controllers/PostsController.cs
         public async Task<IActionResult> PutPostAsync(long id, [FromBody] SavePostResource savePostResource, long userId)
+=======
+        public async Task<IActionResult> PutPostAsync(long id, [FromBody] SavePostResource savePostResource)
+>>>>>>> Stashed changes:EasyStory.API/Controllers/PostsController.cs
         {
            
             var post = _mapper.Map<SavePostResource, Post>(savePostResource);
