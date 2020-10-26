@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using EasyStory.API.Domain.Models;
 using EasyStory.API.Domain.Services;
+using EasyStory.API.Extensions;
 using EasyStory.API.Resources;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -55,6 +56,19 @@ namespace EasyStory.API.Controllers
         {
             var result = await _bookmarkService.DeleteBookmarkAsync(id);
             if (!result.Success)
+                return BadRequest(result.Message);
+            var bookmarkresource = _mapper.Map<Bookmark, BookmarkResource>(result.Resource);
+            return Ok(bookmarkresource);
+        }
+        [SwaggerResponse(200, "Bookmark was created", typeof(BookmarkResource))]
+        [HttpPost("{id}")]
+        public async Task<IActionResult> CreateBookmark([FromBody] SaveBookmarkResource bookmarkResource){
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState.GetErrorMessages());
+            var bookmark = _mapper.Map<SaveBookmarkResource, Bookmark>(bookmarkResource);
+            var result = await _bookmarkService.SaveBookmarkAsync(bookmark);
+
+            if(!result.Success)
                 return BadRequest(result.Message);
             var bookmarkresource = _mapper.Map<Bookmark, BookmarkResource>(result.Resource);
             return Ok(bookmarkresource);
