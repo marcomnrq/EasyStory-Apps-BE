@@ -46,10 +46,6 @@
               "target": "Package",
               "version": "[8.0.1, )"
             },
-            "FluentAssertions": {
-              "target": "Package",
-              "version": "[5.10.3, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.8, )"
@@ -70,17 +66,9 @@
               "target": "Package",
               "version": "[1.2.3, )"
             },
-            "Moq": {
-              "target": "Package",
-              "version": "[4.14.7, )"
-            },
             "MySql.Data.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.21, )"
-            },
-            "NUnit": {
-              "target": "Package",
-              "version": "[3.12.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -121,7 +109,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
