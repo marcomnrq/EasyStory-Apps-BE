@@ -6,6 +6,7 @@ using EasyStory.API.Domain.Models;
 using EasyStory.API.Domain.Services;
 using EasyStory.API.Resources;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace EasyStory.API.Controllers
 {
@@ -24,20 +25,32 @@ namespace EasyStory.API.Controllers
             _mapper = mapper;
         }
 
+
+        [SwaggerOperation(
+            Summary = "List all bookmarks",
+            Description = "List of Bookmarks",
+            OperationId = "ListAllBookmarks",
+            Tags = new[] { "Bookmarks" }
+        )]
+        [SwaggerResponse(200, "List of Bookmarks", typeof(IEnumerable<BookmarkResource>))]
+        [ProducesResponseType(typeof(IEnumerable<BookmarkResource>), 200)]
+        [HttpGet]
         public async Task<IEnumerable<BookmarkResource>> GetBookmarks()
         {
             var bookmark = await _bookmarkService.ListAsync();
             var resources = _mapper.Map<IEnumerable<Bookmark>, IEnumerable<BookmarkResource>>(bookmark);
             return resources;
         }
-
+        [SwaggerResponse(200, "Bookmark was found", typeof(BookmarkResource))]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetBookmarkById(long id)
         {
             var bookmark = await _bookmarkService.GetByIdAsync(id);
             var resource = _mapper.Map<Bookmark, BookmarkResource>(bookmark.Resource);
             return Ok(resource);
         }
-
+        [SwaggerResponse(200, "Bookmark was removed", typeof(BookmarkResource))]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBookmarkAsync(long id)
         {
             var result = await _bookmarkService.DeleteBookmarkAsync(id);
@@ -46,9 +59,6 @@ namespace EasyStory.API.Controllers
             var bookmarkresource = _mapper.Map<Bookmark, BookmarkResource>(result.Resource);
             return Ok(bookmarkresource);
         }
-        
-        
-        
         
     }
 }
