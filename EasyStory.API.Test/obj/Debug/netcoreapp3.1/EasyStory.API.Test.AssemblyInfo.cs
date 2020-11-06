@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("EasyStory.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API", "EasyStory.API.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("EasyStory.API.Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

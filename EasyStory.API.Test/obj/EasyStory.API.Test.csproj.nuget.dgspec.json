@@ -46,6 +46,10 @@
               "target": "Package",
               "version": "[5.10.3, )"
             },
+            "Microsoft.AspNetCore.Mvc.Testing": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.7.1, )"
@@ -66,17 +70,27 @@
               "target": "Package",
               "version": "[3.4.31, )"
             },
-            "SpecFlow.NUnit": {
+            "SpecFlow.Tools.MsBuild.Generation": {
               "target": "Package",
               "version": "[3.4.31, )"
             },
-            "SpecFlow.Tools.MsBuild.Generation": {
+            "SpecFlow.xUnit": {
               "target": "Package",
               "version": "[3.4.31, )"
             },
             "gherkin": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.3, )"
             }
           },
           "imports": [
