@@ -9,10 +9,15 @@ namespace EasyStory.API.Domain.Models
         public string Username { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public int AccountBalance { get; set; }
-        public int SubscriptionPrice { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
         public IList<Post> Posts { get; set; } = new List<Post>();
         public IList<Bookmark> Bookmarks { get; set; } = new List<Bookmark>();
+
+        public IList<Subscription> Subscribeds { get; set; } = new List<Subscription>();
+        public IList<Subscription> Subscribers { get; set; } = new List<Subscription>();
+
+        public IList<Comment> Comments { get; set; } = new List<Comment>();
     }
 }

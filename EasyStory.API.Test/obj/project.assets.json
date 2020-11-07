@@ -9688,11 +9688,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API.Test\\EasyStory.API.Test.csproj",
+      "projectUniqueName": "C:\\Users\\Goncho\\Desktop\\TB4\\EasyStory-Apps-BE\\EasyStory.API.Test\\EasyStory.API.Test.csproj",
       "projectName": "EasyStory.API.Test",
-      "projectPath": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API.Test\\EasyStory.API.Test.csproj",
+      "projectPath": "C:\\Users\\Goncho\\Desktop\\TB4\\EasyStory-Apps-BE\\EasyStory.API.Test\\EasyStory.API.Test.csproj",
       "packagesPath": "C:\\Users\\Goncho\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API.Test\\obj\\",
+      "outputPath": "C:\\Users\\Goncho\\Desktop\\TB4\\EasyStory-Apps-BE\\EasyStory.API.Test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Goncho\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9708,8 +9708,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API\\EasyStory.API.csproj": {
-              "projectPath": "C:\\Users\\Goncho\\Desktop\\EasyStory-Apps-BE\\EasyStory.API\\EasyStory.API.csproj"
+            "C:\\Users\\Goncho\\Desktop\\TB4\\EasyStory-Apps-BE\\EasyStory.API\\EasyStory.API.csproj": {
+              "projectPath": "C:\\Users\\Goncho\\Desktop\\TB4\\EasyStory-Apps-BE\\EasyStory.API\\EasyStory.API.csproj"
             }
           }
         }

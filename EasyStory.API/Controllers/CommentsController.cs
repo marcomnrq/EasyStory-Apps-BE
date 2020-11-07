@@ -16,7 +16,7 @@ namespace EasyStory.API.Controllers
 {
     [ApiController]
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("api/")]
     public class CommentsController : ControllerBase
     {
 
@@ -38,12 +38,44 @@ namespace EasyStory.API.Controllers
             )]
         [SwaggerResponse(200, "List of Comments", typeof(IEnumerable<CommentResource>))]
         [ProducesResponseType(typeof(IEnumerable<CommentResource>), 200)]
-        [HttpGet]
+        [HttpGet("comments")]
         public async Task<IEnumerable<CommentResource>> GetAllAsync()
         {
             var Comments = await _CommentService.ListAsync();
             var resources = _mapper.Map<IEnumerable<Comment>,
                 IEnumerable<CommentResource>>(Comments);
+            return resources;
+        }
+
+        [SwaggerOperation(
+           Summary = "List all Comments by User Id",
+           Description = "List of Comments for a User",
+           OperationId = "ListAllCommentsByUser",
+           Tags = new[] { "Comments" }
+       )]
+        [SwaggerResponse(200, "List of Comments for a User", typeof(IEnumerable<CommentResource>))]
+        [HttpGet("users/{userId}/comments")]
+        public async Task<IEnumerable<CommentResource>> GetAllByUserIdAsync(long userId)
+        {
+            var comments = await _CommentService.ListByUserIdAsync(userId);
+            var resources = _mapper
+                .Map<IEnumerable<Comment>, IEnumerable<CommentResource>>(comments);
+            return resources;
+        }
+
+        [SwaggerOperation(
+           Summary = "List all Comments by Post Id",
+           Description = "List of Comments for a Post",
+           OperationId = "ListAllCommentsByPost",
+           Tags = new[] { "Comments" }
+       )]
+        [SwaggerResponse(200, "List of Comments for a Post", typeof(IEnumerable<CommentResource>))]
+        [HttpGet("posts/{postId}/comments")]
+        public async Task<IEnumerable<CommentResource>> GetAllByPostIdAsync(long postId)
+        {
+            var comments = await _CommentService.ListByPostIdAsync(postId);
+            var resources = _mapper
+                .Map<IEnumerable<Comment>, IEnumerable<CommentResource>>(comments);
             return resources;
         }
 
@@ -54,15 +86,15 @@ namespace EasyStory.API.Controllers
             Tags = new[] { "Comments" }
         )]
         [SwaggerResponse(200, "Comment was created", typeof(CommentResource))]
-        [HttpPost]
-        public async Task<IActionResult> PostAsync([FromBody] SaveCommentResource resource)
+        [HttpPost("users/{userId}/posts/{postId}/comments")]
+        public async Task<IActionResult> PostAsync([FromBody] SaveCommentResource resource, long userId, long postId)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
 
             var Comment = _mapper.Map<SaveCommentResource, Comment>(resource);
 
-            var result = await _CommentService.SaveAsync(Comment);
+            var result = await _CommentService.SaveAsync(Comment,userId,postId);
 
             if (!result.Success)
                 return BadRequest(result.Message);
@@ -80,11 +112,11 @@ namespace EasyStory.API.Controllers
             Tags = new[] { "Comments" }
         )]
         [SwaggerResponse(200, "Comment was updated", typeof(CommentResource))]
-        [HttpPut("id")]
-        public async Task<IActionResult> PutAsync(int id, [FromBody] SaveCommentResource resource)
+        [HttpPut("comments/{commentId}")]
+        public async Task<IActionResult> PutAsync(long commentId, [FromBody] SaveCommentResource resource)
         {
             var Comment = _mapper.Map<SaveCommentResource, Comment>(resource);
-            var result = await _CommentService.UpdateAsync(id, Comment);
+            var result = await _CommentService.UpdateAsync(commentId, Comment);
 
             if (!result.Success)
                 return BadRequest(result.Message);
@@ -92,5 +124,15 @@ namespace EasyStory.API.Controllers
             return Ok(CommentResource);
         }
 
+        [SwaggerResponse(200, "Comment was removed", typeof(CommentResource))]
+        [HttpDelete("comments/{commentId}")]
+        public async Task<IActionResult> DeletePostAsync(long commentId)
+        {
+            var result = await _CommentService.DeleteAsync(commentId);
+            if (!result.Success)
+                return BadRequest(result.Message);
+            var commentresource = _mapper.Map<Comment,CommentResource>(result.Resource);
+            return Ok(commentresource);
+        }
     }
 }

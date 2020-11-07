@@ -12,9 +12,11 @@ namespace EasyStory.API.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly ISubscriptionRepository _subscriptionRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork)
+        public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork, ISubscriptionRepository subscriptionRepository)
         {
+            _subscriptionRepository = subscriptionRepository;
             _userRepository = userRepository;
             _unitOfWork = unitOfWork;
         }
@@ -47,6 +49,13 @@ namespace EasyStory.API.Services
         public async Task<IEnumerable<User>> ListAsync()
         {
             return await _userRepository.ListAsync();
+        }
+
+        public async Task<IEnumerable<User>> ListBySubscriberIdAsync(long subscriberId)
+        {
+            var subscription = await _subscriptionRepository.ListBySubscriberIdAsync(subscriberId);
+            var subscribed = subscription.Select(p => p.Subscribed).ToList();
+            return subscribed;
         }
 
         public Task<IEnumerable<User>> ListByUserIdAsync(long postId)
@@ -84,8 +93,8 @@ namespace EasyStory.API.Services
                 existingUser.Username = user.Username;
                 existingUser.Email = user.Email;
                 existingUser.Password = user.Password;
-                existingUser.AccountBalance = user.AccountBalance;
-                existingUser.SubscriptionPrice = user.SubscriptionPrice;
+                existingUser.FirstName = user.FirstName;
+                existingUser.LastName = user.LastName;
                 _userRepository.Update(existingUser);
                 await _unitOfWork.CompleteAsync();
                 return new UserResponse(existingUser);

@@ -59,6 +59,8 @@ namespace EasyStory.API.Controllers
         public async Task<IActionResult> GetPostById(long id)
         {
             var post = await _postService.GetByIdAsync(id);
+            if (!post.Success)
+                return BadRequest(post.Message);
             var resource = _mapper.Map<Post, PostResource>(post.Resource);
             return Ok(resource);
         }

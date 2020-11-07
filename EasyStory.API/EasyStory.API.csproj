@@ -17,15 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Models\" />
-    <Folder Include="Domain\Services\" />
-    <Folder Include="Domain\Repositories\" />
     <Folder Include="Domain\Persistence\" />
     <Folder Include="Extensions\" />
     <Folder Include="Mapping\" />
-    <Folder Include="Services\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Persistence\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

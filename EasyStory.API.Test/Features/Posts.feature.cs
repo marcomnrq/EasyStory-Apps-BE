@@ -19,7 +19,7 @@ namespace EasyStory.API.Test.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class UsersResourceFeature : object, Xunit.IClassFixture<UsersResourceFeature.FixtureData>, System.IDisposable
+    public partial class PostsResourceFeature : object, Xunit.IClassFixture<PostsResourceFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace EasyStory.API.Test.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "Users.feature"
+#line 1 "Posts.feature"
 #line hidden
         
-        public UsersResourceFeature(UsersResourceFeature.FixtureData fixtureData, EasyStory_API_Test_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public PostsResourceFeature(PostsResourceFeature.FixtureData fixtureData, EasyStory_API_Test_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,7 @@ namespace EasyStory.API.Test.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Users Resource", "\tIn order to set up a new user account \r\n\tAs a client application\r\n\tI want to be " +
-                    "able to create and update a user ", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Posts Resource", "\tIn order to find a post\r\n\tAs a reader\r\n\tI want to be able to find a post", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,15 +80,17 @@ namespace EasyStory.API.Test.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Create new user")]
-        [Xunit.TraitAttribute("FeatureTitle", "Users Resource")]
-        [Xunit.TraitAttribute("Description", "Create new user")]
-        public virtual void CreateNewUser()
+        [Xunit.SkippableFactAttribute(DisplayName="Post was found")]
+        [Xunit.TraitAttribute("FeatureTitle", "Posts Resource")]
+        [Xunit.TraitAttribute("Description", "Post was found")]
+        [Xunit.TraitAttribute("Category", "mytag")]
+        public virtual void PostWasFound()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create new user", null, tagsOfScenario, argumentsOfScenario);
-#line 6
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Post was found", null, tagsOfScenario, argumentsOfScenario);
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -109,16 +110,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
-testRunner.Given("I am a client", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 8
-testRunner.When("I make a post request to \'api/users\' with the following data \'{ \"Username\" : \"moo" +
-                        "nloght\", \"Email\" : \"arrob@.com\", \"Password\" : \"easysstoryy\", \"FirstName\" : \"Gonz" +
-                        "alo\", \"LastName\" : \"nosexdxd\"}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 9
-testRunner.Then("the response status code is \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("I am a reader", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 10
+ testRunner.When("I make a get request to \'api/posts/\' with the post id of \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 11
+ testRunner.Then("the result should be a status code of \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -131,12 +130,12 @@ testRunner.Then("the response status code is \'200\'", ((string)(null)), ((TechT
             
             public FixtureData()
             {
-                UsersResourceFeature.FeatureSetup();
+                PostsResourceFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                UsersResourceFeature.FeatureTearDown();
+                PostsResourceFeature.FeatureTearDown();
             }
         }
     }

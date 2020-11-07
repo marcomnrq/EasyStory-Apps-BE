@@ -5,5 +5,5 @@
 
 Scenario: Create new user
 Given I am a client
-When I make a post request to 'api/users' with the following data '{ "Username" : "moonloght", "Email" : "arrob@.com", "Password" : "easysstoryy", "AccountBalance" : 540, "SubscriptionPrice" : 210 }'
+When I make a post request to 'api/users' with the following data '{ "Username" : "moonloght", "Email" : "arrob@.com", "Password" : "easysstoryy", "FirstName" : "Gonzalo", "LastName" : "nosexdxd"}'
 Then the response status code is '200'

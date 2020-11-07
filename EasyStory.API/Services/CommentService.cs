@@ -52,8 +52,20 @@ namespace EasyStory.API.Services
             return await _CommentRepository.ListAsync();
         }
 
-        public async Task<CommentResponse> SaveAsync(Comment Comment)
+        public async Task<IEnumerable<Comment>> ListByPostIdAsync(long postId)
         {
+            return await _CommentRepository.ListByPostIdAsync(postId);
+        }
+
+        public async Task<IEnumerable<Comment>> ListByUserIdAsync(long userId)
+        {
+            return await _CommentRepository.ListByUserIdAsync(userId);
+        }
+
+        public async Task<CommentResponse> SaveAsync(Comment Comment, long userId, long postId)
+        {
+            Comment.UserId = userId;
+            Comment.PostId = postId;
             try
             {
                 await _CommentRepository.AddAsync(Comment);
