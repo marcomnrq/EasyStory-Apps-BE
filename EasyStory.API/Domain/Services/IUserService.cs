@@ -12,6 +12,7 @@ namespace EasyStory.API.Domain.Services
     {
         Task<IEnumerable<User>> ListAsync();
         Task<IEnumerable<User>> ListByUserIdAsync(long postId);
+        Task<IEnumerable<User>> ListBySubscriberIdAsync(long subscriberId);        
         Task<UserResponse> GetByIdAsync(long id);
         Task<UserResponse> SaveUserAsync(User user);
         Task<UserResponse> UpdateUserAsync(long id, User user);

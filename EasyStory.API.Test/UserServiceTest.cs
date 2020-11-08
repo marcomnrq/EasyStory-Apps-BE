@@ -1,6 +1,7 @@
 using EasyStory.API.Domain.Models;
 using EasyStory.API.Domain.Repositories;
 using EasyStory.API.Domain.Services.Communications;
+using EasyStory.API.Persistence.Repositories;
 using EasyStory.API.Services;
 using FluentAssertions;
 using Moq;
@@ -23,12 +24,16 @@ namespace EasyStory.API.Test
         {
             //Arrange
             var mockUserRepository = GetDefaultIUserRepositoryInstance();
+            var mockBookmarkRepository = GetDefaultIBookmarkRepositoryInstance();
+            var mockSubscriptionRepository = GetDefaultISubscriptionRepositoryInstance();
             mockUserRepository.Setup(r=> r.ListAsync())
                 .ReturnsAsync(new List<User>());
             var mockUnitOfWork = GetDefaultIUnitOfWorkInstance();
             var service = new UserService(
                 mockUserRepository.Object,
-                mockUnitOfWork.Object);
+                mockBookmarkRepository.Object,
+                mockUnitOfWork.Object,
+                mockSubscriptionRepository.Object);
 
             //Act
             List<User> users = (List<User>) await service.ListAsync();
@@ -44,13 +49,17 @@ namespace EasyStory.API.Test
         {
             // Arrange
             var mockUserRepository = GetDefaultIUserRepositoryInstance();
+            var mockBookmarkRepository = GetDefaultIBookmarkRepositoryInstance();
+            var mockSubscriptionRepository = GetDefaultISubscriptionRepositoryInstance();
             var userId = 1;
             mockUserRepository.Setup(r => r.FindById(userId))
                 .Returns(Task.FromResult<User>(null));
             var mockUnitOfWork = GetDefaultIUnitOfWorkInstance();
             var service = new UserService(
                 mockUserRepository.Object,
-                mockUnitOfWork.Object);
+                mockBookmarkRepository.Object,
+                mockUnitOfWork.Object,
+                mockSubscriptionRepository.Object);
 
 
             // Act
@@ -68,9 +77,21 @@ namespace EasyStory.API.Test
             return new Mock<IUserRepository>();
         }
 
+        private Mock<ISubscriptionRepository> GetDefaultISubscriptionRepositoryInstance()
+        {
+            return new Mock<ISubscriptionRepository>();
+        }
+
+        private Mock<IBookmarkRepository> GetDefaultIBookmarkRepositoryInstance()
+        {
+            return new Mock<IBookmarkRepository>();
+        }
+
         private Mock<IUnitOfWork> GetDefaultIUnitOfWorkInstance()
         {
             return new Mock<IUnitOfWork>();
         }
+
+
     }
 }

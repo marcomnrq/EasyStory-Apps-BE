@@ -9,9 +9,10 @@ namespace EasyStory.API.Domain.Services
     public interface IBookmarkService
     {
         Task<IEnumerable<Bookmark>> ListAsync();
-        void ListByUserIdAsync(long userId); // Falta implementar
-        Task<BookmarkResponse> GetByIdAsync(long id);
-        Task<BookmarkResponse> SaveBookmarkAsync(Bookmark bookmark);
-        Task<BookmarkResponse> DeleteBookmarkAsync(long id);
+        Task<IEnumerable<Bookmark>> ListByUserIdAsync(long userId);
+        Task<IEnumerable<Bookmark>> ListByPostIdAsync(long postId);
+        Task<BookmarkResponse> GetByUserIdAndPostIdAsync(long userId, long postId);
+        Task<BookmarkResponse> AssignUserPostAsync(long userId, long postId);
+        Task<BookmarkResponse> UnassignUserPostAsync(long userId, long postId);
     }
 }
