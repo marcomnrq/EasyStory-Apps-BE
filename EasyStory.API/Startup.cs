@@ -38,10 +38,10 @@ namespace EasyStory.API
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IBookmarkRepository, BookmarkRepository>();
-            //services.AddScoped<IPostHashtagRepository, PostHashtagRepository>();
             services.AddScoped<IHashtagRepository, HashtagRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+            services.AddScoped<IPostHashtagRepository,PostHashtagRepository>();
 
             services.AddRouting(options => options.LowercaseUrls = true);
 
@@ -52,10 +52,10 @@ namespace EasyStory.API
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<IBookmarkService, BookmarkService>();
-            //services.AddScoped<IPostHashtagRepository, PostHashtagRepository>();
             services.AddScoped<IHashtagService, HashtagService>();
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<ISubscriptionService, SubscriptionService>();
+            services.AddScoped<IPostHashtagService, PostHashtagService>();
 
             services.AddAutoMapper(typeof(Startup));
 
