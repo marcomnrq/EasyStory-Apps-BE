@@ -25,6 +25,11 @@ namespace EasyStory.API.Persistence.Repositories
             return await _context.Comments.FindAsync(id);
         }
 
+        public async Task<Comment> FindByUserIdAndPostId(long userId, long postId)
+        {
+            return await _context.Comments.FindAsync(userId, postId);
+        }
+
         public async Task<IEnumerable<Comment>> ListAsync()
         {
             return await _context.Comments.ToListAsync();

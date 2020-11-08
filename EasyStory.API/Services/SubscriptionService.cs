@@ -36,6 +36,19 @@ namespace EasyStory.API.Services
             }
         }
 
+        public async Task<SubscriptionResponse> GetBySubscriberIdAndSubscribedIdAsync(long subscriberId, long subscribedId)
+        {
+            var existingSubscription = await _subscriptionRepository.FindBySubscriberIdAndSubscribedId(subscriberId,subscribedId);
+            if (existingSubscription == null)
+                return new SubscriptionResponse("Subscription not found");
+            return new SubscriptionResponse(existingSubscription);
+        }
+
+        public async Task<IEnumerable<Subscription>> ListAsync()
+        {
+            return await _subscriptionRepository.ListAsync();
+        }
+
         public async Task<IEnumerable<Subscription>> ListBySubscribedAsync(long subscribedId)
         {
             return await _subscriptionRepository.ListBySubscribedIdAsync(subscribedId);

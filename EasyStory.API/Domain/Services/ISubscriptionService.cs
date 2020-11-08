@@ -9,8 +9,10 @@ namespace EasyStory.API.Domain.Services
 {
     public interface ISubscriptionService
     {
+        Task<IEnumerable<Subscription>> ListAsync();
         Task<IEnumerable<Subscription>> ListBySubscriberIdAsync(long subscriberId);
         Task<IEnumerable<Subscription>> ListBySubscribedAsync(long subscribedId);
+        Task<SubscriptionResponse> GetBySubscriberIdAndSubscribedIdAsync(long subscriberId, long subscribedId);
         Task<SubscriptionResponse> AssignSubscriberSubscribedAsync(Subscription subscription, long subscriberId, long subscribedId);
         Task<SubscriptionResponse> UnassignSubscriberSubscribedAsync(long subscriberId, long subscribedId);
     }

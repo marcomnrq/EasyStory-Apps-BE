@@ -15,7 +15,7 @@ namespace EasyStory.API.Controllers
 {
     [ApiController]
     [Produces("application/json")]
-    [Route("api/subscriber/{subscriberId}/subscribed")]
+    [Route("api/")]
     public class SubscriptionsController : ControllerBase
     {
         private readonly ISubscriptionService _subscriptionService;
@@ -29,7 +29,28 @@ namespace EasyStory.API.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [SwaggerOperation(
+            Summary = "List all Subscriptions",
+            Description = "List of Subscriptions",
+            OperationId = "ListAllSubscriptions",
+            Tags = new[] { "Subscriptions" }
+        )]
+        [SwaggerResponse(200, "List of Subscriptions", typeof(IEnumerable<SubscriptionResource>))]
+        [HttpGet("subscriptions")]
+        public async Task<IEnumerable<SubscriptionResource>> GetSubscriptions()
+        {
+            var subscriptions = await _subscriptionService.ListAsync();
+            var resources = _mapper.Map<IEnumerable<Subscription>, IEnumerable<SubscriptionResource>>(subscriptions);
+            return resources;
+        }
+
+        [SwaggerOperation(
+            Summary = "List all Subscriptions of a Reader",
+            Description = "List of Subscriptions of a Reader",
+            OperationId = "ListAllSubscriptionsOfAReader"
+        )]
+        [SwaggerResponse(200, "List of Subscriptions for a Reader", typeof(SubscriptionResource))]
+        [HttpGet("subscriber/{subscriberId}/subscribed")]
         public async Task<IEnumerable<UserResource>> GetAllBySubscriberIdAsync(long subscriberId)
         {
             var subscribed = await _userService.ListBySubscriberIdAsync(subscriberId);
@@ -37,8 +58,13 @@ namespace EasyStory.API.Controllers
             return resources;
         }
 
+        [SwaggerOperation(
+            Summary = "Assign a subscription",
+            Description = "Assign a subscription",
+            OperationId = "AssignSubscription"
+        )]
         [SwaggerResponse(200, "Subscription was Assigned", typeof(SubscriptionResource))]
-        [HttpPost("{subscribedId}")]
+        [HttpPost("subscriber/{subscriberId}/subscribed/{subscribedId}")]
         public async Task<IActionResult> AssignSubscriberSubscribed([FromBody] SaveSubscriptionResource subscriptionResource, long subscriberId, long subscribedId)
         {
             if (!ModelState.IsValid)
@@ -53,15 +79,20 @@ namespace EasyStory.API.Controllers
 
         }
 
+        [SwaggerOperation(
+            Summary = "Unassign Subscription",
+            Description = "Unassign Subscription",
+            OperationId = "UnassignSubscription"
+        )]
         [SwaggerResponse(200, "Subscription was unassigned", typeof(SubscriptionResource))]
-        [HttpDelete("{subscribedId}")]
+        [HttpDelete("subscriber/{subscriberId}/subscribed/{subscribedId}")]
         public async Task<IActionResult> UnassignSubscriberSubscribed(long subscriberId, long subscribedId)
         {
             var result = await _subscriptionService.UnassignSubscriberSubscribedAsync(subscriberId, subscribedId);
 
             if (!result.Success)
                 return BadRequest(result.Message);
-            var subscribedResource = _mapper.Map<User, UserResource>(result.Resource.Subscribed);
+            var subscribedResource = _mapper.Map<Subscription, SubscriptionResource>(result.Resource);
             return Ok(subscribedResource);
         }
     }

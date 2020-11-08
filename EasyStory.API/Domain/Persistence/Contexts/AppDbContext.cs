@@ -18,7 +18,7 @@ namespace EasyStory.API.Domain.Persistence.Contexts
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
-
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -31,11 +31,11 @@ namespace EasyStory.API.Domain.Persistence.Contexts
             builder.Entity<User>().Property(p => p.Email).IsRequired().HasMaxLength(30);
             builder.Entity<User>().Property(p => p.FirstName).IsRequired().HasMaxLength(30);
             builder.Entity<User>().Property(p => p.LastName).IsRequired().HasMaxLength(30);
-            builder.Entity<User>().HasMany(p => p.Posts).WithOne(p => p.User).HasForeignKey(p =>p.UserId);
+            builder.Entity<User>().HasMany(p => p.Posts).WithOne(p => p.User).HasForeignKey(p =>p.UserId).OnDelete(DeleteBehavior.Cascade);
             builder.Entity<User>().HasMany(p => p.Bookmarks).WithOne(p => p.User).HasForeignKey(p => p.UserId);
-            builder.Entity<User>().HasMany(p => p.Comments).WithOne(p => p.User).HasForeignKey(p => p.UserId);
-            builder.Entity<User>().HasMany(p => p.Subscribeds).WithOne(p => p.Subscribed).HasForeignKey(p => p.SubscribedId);
-            builder.Entity<User>().HasMany(p => p.Subscribers).WithOne(p => p.Subscriber).HasForeignKey(p => p.SubscriberId);
+            builder.Entity<User>().HasMany(p => p.Comments).WithOne(p => p.User).HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<User>().HasMany(p => p.Subscribeds).WithOne(p => p.Subscribed).HasForeignKey(p => p.SubscribedId).OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<User>().HasMany(p => p.Subscribers).WithOne(p => p.Subscriber).HasForeignKey(p => p.SubscriberId).OnDelete(DeleteBehavior.Cascade);
 
             //Comment Entity
             builder.Entity<Comment>().ToTable("Comments");

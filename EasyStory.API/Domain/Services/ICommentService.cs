@@ -10,6 +10,7 @@ namespace EasyStory.API.Domain.Services
     {
         Task<IEnumerable<Comment>> ListAsync();
         Task<CommentResponse> GetByIdAsync(long id);
+        Task<CommentResponse> GetByUserIdAndPostIdAsync(long userId, long postId);
         Task<IEnumerable<Comment>> ListByPostIdAsync(long postId);
         Task<IEnumerable<Comment>> ListByUserIdAsync(long userId);
         Task<CommentResponse> SaveAsync(Comment comment, long userId, long postId);

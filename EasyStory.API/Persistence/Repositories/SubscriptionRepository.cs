@@ -36,6 +36,11 @@ namespace EasyStory.API.Persistence.Repositories
             return await _context.Subscriptions.FindAsync(subscriberId, subscribedId);
         }
 
+        public async Task<IEnumerable<Subscription>> ListAsync()
+        {
+            return await _context.Subscriptions.ToListAsync();
+        }
+
         public async Task<IEnumerable<Subscription>> ListBySubscribedIdAsync(long subscribedId)
         {
             return await _context.Subscriptions

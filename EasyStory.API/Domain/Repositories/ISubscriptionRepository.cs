@@ -8,6 +8,7 @@ namespace EasyStory.API.Domain.Repositories
 {
     public interface ISubscriptionRepository
     {
+        Task<IEnumerable<Subscription>> ListAsync();
         Task<IEnumerable<Subscription>> ListBySubscriberIdAsync(long subscriberId);
         Task<IEnumerable<Subscription>> ListBySubscribedIdAsync(long subscribedId);
         Task<Subscription> FindBySubscriberIdAndSubscribedId(long subscriberId, long subscribedId);

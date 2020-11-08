@@ -19,7 +19,7 @@ namespace EasyStory.API.Test.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class PostsResourceFeature : object, Xunit.IClassFixture<PostsResourceFeature.FixtureData>, System.IDisposable
+    public partial class SubscriptionVisualizationFeature : object, Xunit.IClassFixture<SubscriptionVisualizationFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace EasyStory.API.Test.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "Posts.feature"
+#line 1 "SubscriptionVisualization.feature"
 #line hidden
         
-        public PostsResourceFeature(PostsResourceFeature.FixtureData fixtureData, EasyStory_API_Test_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public SubscriptionVisualizationFeature(SubscriptionVisualizationFeature.FixtureData fixtureData, EasyStory_API_Test_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,7 +40,8 @@ namespace EasyStory.API.Test.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Posts Resource", "\tIn order to find a post\r\n\tAs a reader\r\n\tI want to be able to find a post", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "SubscriptionVisualization", "\tIn order to manage my access to content\r\n\tAs a user\r\n\tI want to see my subscript" +
+                    "ions", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -80,17 +81,17 @@ namespace EasyStory.API.Test.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Post was found")]
-        [Xunit.TraitAttribute("FeatureTitle", "Posts Resource")]
-        [Xunit.TraitAttribute("Description", "Post was found")]
+        [Xunit.SkippableFactAttribute(DisplayName="Subscriptions were found")]
+        [Xunit.TraitAttribute("FeatureTitle", "SubscriptionVisualization")]
+        [Xunit.TraitAttribute("Description", "Subscriptions were found")]
         [Xunit.TraitAttribute("Category", "mytag")]
-        public virtual void PostWasFound()
+        public virtual void SubscriptionsWereFound()
         {
             string[] tagsOfScenario = new string[] {
                     "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Post was found", null, tagsOfScenario, argumentsOfScenario);
-#line 8
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Subscriptions were found", null, tagsOfScenario, argumentsOfScenario);
+#line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -110,28 +111,28 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 8
+ testRunner.Given("I am a user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 9
- testRunner.Given("I am a reader", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("I make a get request to \'api/subscriber/1/subscribed/\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
- testRunner.When("I make a get request to \'api/posts/\' with the post id of \'4\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 11
- testRunner.Then("the result should be a status code of \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the response list should be a status code of \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Post was not found")]
-        [Xunit.TraitAttribute("FeatureTitle", "Posts Resource")]
-        [Xunit.TraitAttribute("Description", "Post was not found")]
-        public virtual void PostWasNotFound()
+        [Xunit.SkippableFactAttribute(DisplayName="No subscriptions were found")]
+        [Xunit.TraitAttribute("FeatureTitle", "SubscriptionVisualization")]
+        [Xunit.TraitAttribute("Description", "No subscriptions were found")]
+        public virtual void NoSubscriptionsWereFound()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Post was not found", null, tagsOfScenario, argumentsOfScenario);
-#line 13
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("No subscriptions were found", null, tagsOfScenario, argumentsOfScenario);
+#line 12
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -151,14 +152,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 13
+ testRunner.Given("I am a user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 14
- testRunner.Given("I am a reader", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("I make a get request to \'api/subscriber/./subscribed/\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 15
- testRunner.When("I make a get request to \'api/posts/\' with the post id of \'9\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 16
- testRunner.Then("the result should be a status code of \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the response list should be a status code of \'404\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -171,12 +172,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                PostsResourceFeature.FeatureSetup();
+                SubscriptionVisualizationFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                PostsResourceFeature.FeatureTearDown();
+                SubscriptionVisualizationFeature.FeatureTearDown();
             }
         }
     }
