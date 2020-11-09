@@ -114,7 +114,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("I am a reader", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 10
- testRunner.When("I make a get request to \'api/posts/\' with the post id of \'4\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I make a get the post request to \'api/posts/\' with the post id of \'4\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
  testRunner.Then("the result should be a status code of \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -155,7 +155,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("I am a reader", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 15
- testRunner.When("I make a get request to \'api/posts/\' with the post id of \'9\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I make a get the post request to \'api/posts/\' with the post id of \'9\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 16
  testRunner.Then("the result should be a status code of \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

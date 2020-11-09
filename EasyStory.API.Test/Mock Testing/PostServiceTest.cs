@@ -22,12 +22,14 @@ namespace EasyStory.API.Test
             // Arrange
             var mockPostRepository = GetDefaultIPostRepositoryInstance();
             var mockPostHashtagRepository = GetDefaultIPostHashtagRepositoryInstance();
+            var mockBookmarkRepository = GetDefaultIBookmarkRepositoryInstance();
             mockPostRepository.Setup(r => r.ListAsync())
                 .ReturnsAsync(new List<Post>());
             var mockUnitOfWork = GetDefaultIUnitOfWorkInstance();
             var service = new PostService(
                 mockPostRepository.Object,
                 mockPostHashtagRepository.Object,
+                mockBookmarkRepository.Object,
                 mockUnitOfWork.Object);
 
             // Act
@@ -44,6 +46,7 @@ namespace EasyStory.API.Test
             // Arrange
             var mockPostRepository = GetDefaultIPostRepositoryInstance();
             var mockPostHashtagRepository = GetDefaultIPostHashtagRepositoryInstance();
+            var mockBookmarkRepository = GetDefaultIBookmarkRepositoryInstance();
             var postId = 1;
             mockPostRepository.Setup(r => r.FindById(postId))
                 .Returns(Task.FromResult<Post>(null));
@@ -51,6 +54,7 @@ namespace EasyStory.API.Test
             var service = new PostService(
                 mockPostRepository.Object,
                 mockPostHashtagRepository.Object,
+                mockBookmarkRepository.Object,
                 mockUnitOfWork.Object);
 
 
@@ -71,6 +75,11 @@ namespace EasyStory.API.Test
         private Mock<IPostHashtagRepository> GetDefaultIPostHashtagRepositoryInstance()
         {
             return new Mock<IPostHashtagRepository>();
+        }
+
+        private Mock<IBookmarkRepository> GetDefaultIBookmarkRepositoryInstance()
+        {
+            return new Mock<IBookmarkRepository>();
         }
 
         private Mock<IUnitOfWork> GetDefaultIUnitOfWorkInstance()

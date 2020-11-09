@@ -13,11 +13,13 @@ namespace EasyStory.API.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly ISubscriptionRepository _subscriptionRepository;
+        private readonly IBookmarkRepository _bookmarkRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork, ISubscriptionRepository subscriptionRepository)
+        public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork, ISubscriptionRepository subscriptionRepository, IBookmarkRepository bookmarkRepository)
         {
             _subscriptionRepository = subscriptionRepository;
             _userRepository = userRepository;
+            _bookmarkRepository = bookmarkRepository;
             _unitOfWork = unitOfWork;
         }
 
@@ -78,10 +80,6 @@ namespace EasyStory.API.Services
             }
         }
 
-        public Task<UserResponse> UpdateHUserAsync(long id, User user)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<UserResponse> UpdateUserAsync(long id, User user)
         {

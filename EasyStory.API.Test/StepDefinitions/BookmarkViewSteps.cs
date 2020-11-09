@@ -1,6 +1,4 @@
-﻿using Castle.Core.Resource;
-using EasyStory.API.Resources;
-using Microsoft.AspNetCore.Mvc.Testing;
+﻿using Microsoft.AspNetCore.Mvc.Testing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +12,7 @@ using Xunit;
 namespace EasyStory.API.Test.StepDefinitions
 {
     [Binding]
-    public class PostsResourceSteps : IClassFixture<WebApplicationFactory<TestStartup>>
+    public  class BookmarkViewSteps: IClassFixture<WebApplicationFactory<TestStartup>>
     {
         private WebApplicationFactory<TestStartup> _factory;
         private HttpClient _client { get; set; }
@@ -22,13 +20,14 @@ namespace EasyStory.API.Test.StepDefinitions
 
 
 
-        public PostsResourceSteps(WebApplicationFactory<TestStartup> factory)
+        public BookmarkViewSteps(WebApplicationFactory<TestStartup> factory)
         {
             _factory = factory;
         }
 
-        [Given(@"I am a reader")]
-        public void GivenIAmAReader()
+
+        [Given(@"I am a reader with bookmarks")]
+        public void GivenIAmAReaderWithBookmarks()
         {
             _client = _factory.CreateClient(new WebApplicationFactoryClientOptions
             {
@@ -36,25 +35,19 @@ namespace EasyStory.API.Test.StepDefinitions
             });
         }
 
-       
-        [When(@"I make a get the post request to '(.*)' with the post id of '(.*)'")]
-        public async Task WhenIMakeAGetThePostRequestToWithThePostIdOf(string endpoint, long postId)
+        [When(@"I make a get bookmark request to '(.*)' with the user id of '(.*)' and request '(.*)'")]
+        public async Task WhenIMakeAGetBookmarkRequestToWithTheUserIdOfAndRequest(string endpointUser, long userId, string endpointBookmark)
         {
-            var postRelativeUri = new Uri(endpoint + postId, UriKind.Relative);
+            var postRelativeUri = new Uri(endpointUser + userId + endpointBookmark, UriKind.Relative);
             Response = await _client.GetAsync(postRelativeUri).ConfigureAwait(false);
         }
 
-
-
-        [Then(@"the result should be a status code of '(.*)'")]
-        public void ThenTheResultShouldBeAStatusCodeOf(int statusCode)
+        [Then(@"the result should be (.*)")]
+        public void ThenTheResultShouldBe(int statusCode)
         {
-          var expectedStatusCode = (HttpStatusCode)statusCode;
+            var expectedStatusCode = (HttpStatusCode)statusCode;
             Assert.Equal(expectedStatusCode, Response.StatusCode);
         }
-
-
-
 
 
     }

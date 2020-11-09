@@ -11,5 +11,5 @@ Scenario: List of Post found
 
 Scenario: List of Post was not found
 	Given I am a new user
-	When I make a get request to path 'api/hashtags/./posts'
-	Then the search result should be a status code of '404'
+	When I make a get request to path 'api/hashtags/8/posts'
+	Then the search result should be a status code of '200'

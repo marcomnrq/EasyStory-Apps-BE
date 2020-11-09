@@ -19,7 +19,7 @@ namespace EasyStory.API.Test.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class PostSearchFeature : object, Xunit.IClassFixture<PostSearchFeature.FixtureData>, System.IDisposable
+    public partial class BookmarkViewFeature : object, Xunit.IClassFixture<BookmarkViewFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace EasyStory.API.Test.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "PostSearch.feature"
+#line 1 "BookmarkView.feature"
 #line hidden
         
-        public PostSearchFeature(PostSearchFeature.FixtureData fixtureData, EasyStory_API_Test_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public BookmarkViewFeature(BookmarkViewFeature.FixtureData fixtureData, EasyStory_API_Test_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace EasyStory.API.Test.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "PostSearch", "\tIn order to start reading a post\r\n\tAs a new user\r\n\tI want to search posts using " +
-                    "a hashtag", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "BookmarkView", "\tIn order to check my favourite stories\r\n\tAs a user\r\n\tI want to be able to see my" +
+                    " bookmarks", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,17 +81,15 @@ namespace EasyStory.API.Test.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="List of Post found")]
-        [Xunit.TraitAttribute("FeatureTitle", "PostSearch")]
-        [Xunit.TraitAttribute("Description", "List of Post found")]
-        [Xunit.TraitAttribute("Category", "mytag")]
-        public virtual void ListOfPostFound()
+        [Xunit.SkippableFactAttribute(DisplayName="Bookmark was found")]
+        [Xunit.TraitAttribute("FeatureTitle", "BookmarkView")]
+        [Xunit.TraitAttribute("Description", "Bookmark was found")]
+        public virtual void BookmarkWasFound()
         {
-            string[] tagsOfScenario = new string[] {
-                    "mytag"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("List of Post found", null, tagsOfScenario, argumentsOfScenario);
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Bookmark was found", null, tagsOfScenario, argumentsOfScenario);
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -111,28 +109,29 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 7
+ testRunner.Given("I am a reader with bookmarks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 8
- testRunner.Given("I am a new user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("I make a get bookmark request to \'api/users/\' with the user id of \'1\' and request" +
+                        " \'/bookmarks\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.When("I make a get request to path \'api/hashtags/2/posts\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 10
- testRunner.Then("the search result should be a status code of \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the result should be 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="List of Post was not found")]
-        [Xunit.TraitAttribute("FeatureTitle", "PostSearch")]
-        [Xunit.TraitAttribute("Description", "List of Post was not found")]
-        public virtual void ListOfPostWasNotFound()
+        [Xunit.SkippableFactAttribute(DisplayName="Bookmark not found")]
+        [Xunit.TraitAttribute("FeatureTitle", "BookmarkView")]
+        [Xunit.TraitAttribute("Description", "Bookmark not found")]
+        public virtual void BookmarkNotFound()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("List of Post was not found", null, tagsOfScenario, argumentsOfScenario);
-#line 12
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Bookmark not found", null, tagsOfScenario, argumentsOfScenario);
+#line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -152,14 +151,15 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 12
+ testRunner.Given("I am a reader with bookmarks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 13
- testRunner.Given("I am a new user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("I make a get bookmark request to \'api/users/\' with the user id of \'9\' and request" +
+                        " \'/bookmarks\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 14
- testRunner.When("I make a get request to path \'api/hashtags/8/posts\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 15
- testRunner.Then("the search result should be a status code of \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the result should be 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -172,12 +172,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                PostSearchFeature.FeatureSetup();
+                BookmarkViewFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                PostSearchFeature.FeatureTearDown();
+                BookmarkViewFeature.FeatureTearDown();
             }
         }
     }

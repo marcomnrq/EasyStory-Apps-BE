@@ -14,6 +14,7 @@ namespace EasyStory.API.Domain.Persistence.Contexts
         public DbSet<Bookmark> Bookmarks { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<Qualification> Qualifications { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -47,9 +48,15 @@ namespace EasyStory.API.Domain.Persistence.Contexts
 
             //BookMark Entity
             builder.Entity<Bookmark>().ToTable("Bookmarks");
-            builder.Entity<Bookmark>().HasKey(p => p.Id);
-            builder.Entity<Bookmark>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Comment>().Property(p => p.UserId).IsRequired();
+            builder.Entity<Bookmark>().HasKey(p => new { p.UserId, p.PostId });
+            builder.Entity<Bookmark>()
+                .HasOne(p => p.User)
+                .WithMany(p => p.Bookmarks)
+                .HasForeignKey(p => p.UserId);
+            builder.Entity<Bookmark>()
+                .HasOne(p => p.Post)
+                .WithMany(p => p.Posts)
+                .HasForeignKey(p => p.PostId);
 
             // Post Entity
             builder.Entity<Post>().ToTable("Posts");
@@ -66,9 +73,14 @@ namespace EasyStory.API.Domain.Persistence.Contexts
                 .HasMany(p => p.Comments)
                 .WithOne(p => p.Post)
                 .HasForeignKey(p => p.PostId);
-            
-                                  
 
+
+            //Qualification Entity
+            builder.Entity<Qualification>().ToTable("Qualifications");
+            builder.Entity<Qualification>().HasKey(p => new { p.UserId, p.PostId });
+            builder.Entity<Qualification>().Property(p => p.Qualificate).IsRequired();
+            builder.Entity<Qualification>().Property(p => p.PostId).IsRequired();
+            builder.Entity<Qualification>().Property(p => p.UserId).IsRequired();
 
             // Hashtag Entity
             builder.Entity<Hashtag>().ToTable("Hashtags");
