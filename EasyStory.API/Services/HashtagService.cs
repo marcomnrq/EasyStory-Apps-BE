@@ -13,9 +13,11 @@ namespace EasyStory.API.Services
     {
         private readonly IHashtagRepository _hashtagRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public HashtagService(IHashtagRepository hashtagRepository,IUnitOfWork unitOfWork)
+        private readonly IPostHashtagRepository _postHashtagRepository;
+        public HashtagService(IHashtagRepository hashtagRepository, IPostHashtagRepository postHashtagRepository,IUnitOfWork unitOfWork)
         {
             _hashtagRepository = hashtagRepository;
+            _postHashtagRepository = postHashtagRepository;
             _unitOfWork = unitOfWork;
         }
 
@@ -49,10 +51,11 @@ namespace EasyStory.API.Services
             return await _hashtagRepository.ListAsync();
         }
 
-        public  Task<IEnumerable<Hashtag>> ListByPostIdAsync(long postId)
+        public  async Task<IEnumerable<Hashtag>> ListByPostIdAsync(long postId)
         {
-            // para implementar esta sección se necesita la implementación del servicio  de post, despues realizar su unión en el nuevo post hashtag
-            throw new NotImplementedException();
+            var postHashtags = await _postHashtagRepository.ListByPostIdAsync(postId);
+            var hashtags = postHashtags.Select(p => p.Hashtag).ToList();
+            return hashtags;
         }
 
         public async Task<HashtagResponse> SaveHashtagAsync(Hashtag hashtag)

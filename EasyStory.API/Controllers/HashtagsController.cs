@@ -3,6 +3,7 @@ using EasyStory.API.Domain.Models;
 using EasyStory.API.Domain.Services;
 using EasyStory.API.Extensions;
 using EasyStory.API.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -41,7 +42,7 @@ namespace EasyStory.API.Controllers
             return resources;
         }
         [SwaggerResponse(200, "hashTag was found", typeof(HashtagResource))]
-        [HttpGet("id")]
+        [HttpGet("{hashtagId}")]
         public async Task<IActionResult> GetHashtagById(long id)
         {
             var hashtag = await _hashtagService.GetByIdAsync(id);
@@ -64,7 +65,7 @@ namespace EasyStory.API.Controllers
 
         }
         [SwaggerResponse(200, "Hashtag was updated", typeof(HashtagResource))]
-        [HttpPut("id")]
+        [HttpPut("{hashtagId}")]
         public async Task<IActionResult> PutHashtagAsync(long id, [FromBody]SaveHashtagResource saveHashtagResource)
         {
             var hashtag = _mapper.Map<SaveHashtagResource, Hashtag>(saveHashtagResource);
@@ -75,7 +76,7 @@ namespace EasyStory.API.Controllers
             return Ok(hashtagresource);
         }
         [SwaggerResponse(200, "Hashtag was removed", typeof(HashtagResource))]
-        [HttpDelete("id")]
+        [HttpDelete("{hashtagId}")]
         public async Task<IActionResult> DeleteHashtagAsync(long id)
         {
             var result = await _hashtagService.DeleteHashtagAsync(id);

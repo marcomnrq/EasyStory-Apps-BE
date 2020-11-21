@@ -3,6 +3,7 @@ using EasyStory.API.Domain.Models;
 using EasyStory.API.Domain.Services;
 using EasyStory.API.Extensions;
 using EasyStory.API.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -55,12 +56,12 @@ namespace EasyStory.API.Controllers
             return resources;
         }
         [SwaggerResponse(200, "Post was found", typeof(PostResource))]
-        [HttpGet("posts/{id}")]
-        public async Task<IActionResult> GetPostById(long id)
+        [HttpGet("posts/{postId}")]
+        public async Task<IActionResult> GetPostById(long postId)
         {
-            var post = await _postService.GetByIdAsync(id);
+            var post = await _postService.GetByIdAsync(postId);
             if (!post.Success)
-                return BadRequest(post.Message);
+                return NotFound(post.Message);
             var resource = _mapper.Map<Post, PostResource>(post.Resource);
             return Ok(resource);
         }
@@ -80,21 +81,21 @@ namespace EasyStory.API.Controllers
             
         }
         [SwaggerResponse(200, "Post was updated", typeof(PostResource))]
-        [HttpPut("posts/{id}")]
-        public async Task<IActionResult> PutPostAsync(long id, [FromBody] SavePostResource savePostResource)
+        [HttpPut("posts/{postId}")]
+        public async Task<IActionResult> PutPostAsync(long postId, [FromBody] SavePostResource savePostResource)
         {
             var post = _mapper.Map<SavePostResource, Post>(savePostResource);
-            var result = await _postService.UpdatePostAsync(id, post);
+            var result = await _postService.UpdatePostAsync(postId, post);
             if (!result.Success)
                 return BadRequest(result.Message);
             var postresource = _mapper.Map<Post, PostResource>(result.Resource);
             return Ok(postresource);
         }
         [SwaggerResponse(200, "Post was removed", typeof(PostResource))]
-        [HttpDelete("posts/{id}")]
-        public async Task<IActionResult> DeletePostAsync(long id)
+        [HttpDelete("posts/{postId}")]
+        public async Task<IActionResult> DeletePostAsync(long postId)
         {
-            var result = await _postService.DeletePostAsync(id);
+            var result = await _postService.DeletePostAsync(postId);
             if (!result.Success)
                 return BadRequest(result.Message);
             var postresource = _mapper.Map<Post, PostResource>(result.Resource);

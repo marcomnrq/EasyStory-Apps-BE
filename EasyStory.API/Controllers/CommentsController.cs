@@ -9,6 +9,7 @@ using EasyStory.API.Domain.Services;
 using EasyStory.API.Extensions;
 using EasyStory.API.Resources;
 using Swashbuckle.AspNetCore.Annotations;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -77,6 +78,22 @@ namespace EasyStory.API.Controllers
             var resources = _mapper
                 .Map<IEnumerable<Comment>, IEnumerable<CommentResource>>(comments);
             return resources;
+        }
+
+        [SwaggerOperation(
+            Summary = "Get Comment by UserId And PostId",
+            Description = "Get Comment by UserId And PostId",
+            OperationId = "GetCommentByUserIdAndPostId"
+        )]
+        [SwaggerResponse(200, "List of Comment for a User and Post", typeof(IEnumerable<CommentResource>))]
+        [HttpGet("users/{userId}/posts/{postId}/comments")]
+        public async Task<IActionResult> GetCommentByUserIdAndPostId(long userId, long postId)
+        {
+            var comment = await _CommentService.GetByUserIdAndPostIdAsync(userId, postId);
+            if (!comment.Success)
+                return NotFound(comment.Message);
+            var resource = _mapper.Map<Comment, CommentResource>(comment.Resource);
+            return Ok(resource);
         }
 
         [SwaggerOperation(

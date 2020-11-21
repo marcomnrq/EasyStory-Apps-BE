@@ -11,6 +11,11 @@ using EasyStory.API.Domain.Services;
 using EasyStory.API.Extensions;
 using EasyStory.API.Persistence.Repositories;
 using EasyStory.API.Services;
+using Microsoft.AspNetCore.Mvc;
+using EasyStory.API.Settings;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace EasyStory.API
 {
@@ -27,10 +32,16 @@ namespace EasyStory.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+            //CORS configuration
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder => builder.AllowAnyOrigin());
+            });
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddDbContext<AppDbContext>(options =>
             {
-                // options.UseInMemoryDatabase("supermarket-api-in-memory");
+                
                 options.UseMySQL(Configuration.GetConnectionString("MySQLConnection"));
             });
 
@@ -38,10 +49,11 @@ namespace EasyStory.API
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IBookmarkRepository, BookmarkRepository>();
-            //services.AddScoped<IPostHashtagRepository, PostHashtagRepository>();
             services.AddScoped<IHashtagRepository, HashtagRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+            services.AddScoped<IPostHashtagRepository,PostHashtagRepository>();
+            services.AddScoped<IQualificationRepository, QualificationRepository>();
 
             services.AddRouting(options => options.LowercaseUrls = true);
 
@@ -52,14 +64,41 @@ namespace EasyStory.API
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<IBookmarkService, BookmarkService>();
-            //services.AddScoped<IPostHashtagRepository, PostHashtagRepository>();
             services.AddScoped<IHashtagService, HashtagService>();
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<ISubscriptionService, SubscriptionService>();
+            services.AddScoped<IPostHashtagService, PostHashtagService>();
+            services.AddScoped<IQualificationService, QualificationService>();
 
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddCustomSwagger();
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+
+            // Configure Authentication System Based on Bearer JWT
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(x =>
+                {
+                    x.RequireHttpsMetadata = false;
+                    x.SaveToken = true;
+                    x.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
+        
+
+        services.AddCustomSwagger();
         }
 
 
@@ -72,8 +111,17 @@ namespace EasyStory.API
             }
 
             app.UseHttpsRedirection();
+            //CORS configuration
+            app.UseCors(options =>
+            {
+                options.WithOrigins("htpp://localhost:8080");
+                options.AllowAnyMethod();
+                options.AllowAnyHeader();
+            });
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

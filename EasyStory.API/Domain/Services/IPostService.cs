@@ -11,8 +11,9 @@ namespace EasyStory.API.Domain.Services
     public interface IPostService
     {
         Task<IEnumerable<Post>> ListAsync();
-        Task<IEnumerable<Post>> ListByReaderIdAsync(long userId);
         Task<IEnumerable<Post>> ListByUserIdAsync(long userId);
+        Task<IEnumerable<Post>> ListByReaderIdAsync(long readerId);
+        Task<IEnumerable<Post>> ListByHashtagIdAsync(long hashtagId);
         Task<PostResponse> GetByIdAsync(long id);
         Task<PostResponse> SavePostAsync(Post post, long userId);
         Task<PostResponse> UpdatePostAsync(long id, Post post);

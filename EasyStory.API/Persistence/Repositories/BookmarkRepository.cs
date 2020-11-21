@@ -1,10 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EasyStory.API.Domain.Models;
 using EasyStory.API.Domain.Persistence.Contexts;
 using EasyStory.API.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace EasyStory.API.Persistence.Repositories
 {
@@ -71,5 +71,7 @@ namespace EasyStory.API.Persistence.Repositories
         {
             return await _context.Bookmarks.ToListAsync();
         }
+
+
     }
 }
