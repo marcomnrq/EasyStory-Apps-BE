@@ -8,7 +8,7 @@ namespace EasyStory.API.Resources
     public class SubscriptionResource
     {
         public float Price { get; set; }
-        public long SubscriberId { get; set; }
+        public long UserId { get; set; }
         public long SubscribedId { get; set; }
     }
 }

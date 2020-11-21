@@ -12,8 +12,9 @@ using Xunit;
 namespace EasyStory.API.Test.StepDefinitions
 {
     [Binding]
-    public  class CommentCreationSteps : IClassFixture<WebApplicationFactory<TestStartup>>
+    public sealed class CommentCreationSteps : IClassFixture<WebApplicationFactory<TestStartup>>
     {
+        // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
 
         private WebApplicationFactory<TestStartup> _factory;
         private HttpClient _client { get; set; }
@@ -24,8 +25,8 @@ namespace EasyStory.API.Test.StepDefinitions
             _factory = factory;
         }
 
-        [Given(@"I am a reader/writer")]
-        public void GivenIAmAReaderWriter()
+        [Given(@"I am a reader or writer")]
+        public void GivenIAmAReaderOrWriter()
         {
             _client = _factory.CreateClient(new WebApplicationFactoryClientOptions
             {
@@ -33,17 +34,17 @@ namespace EasyStory.API.Test.StepDefinitions
             });
         }
 
-        [When(@"I make a get comment request to '(.*)'")]
-        public virtual async  Task WhenIMakeAGetCommentRequestTo(string endpoint)
+        [When(@"I  make a post comment request to '(.*)' with the user id of '(.*)' and request '(.*)' with post id of '(.*)' and request '(.*)' with the data: '(.*)'")]
+        public async Task WhenIMakeAPostCommentRequestToWithTheUserIdOfAndRequestWithPostIdOfAndRequestWithTheData(string endpointUser, long userId, string endpointPost, long postId, string endpointComment, string postDataJson)
         {
-            var getRelativeUri = new Uri(endpoint, UriKind.Relative);
-            Response = await _client.GetAsync(getRelativeUri).ConfigureAwait(false);
+            var postRelativeUri = new Uri(endpointUser + userId + endpointPost + postId + endpointComment, UriKind.Relative);
+            var content = new StringContent(postDataJson, Encoding.UTF8, "application/json");
+            Response = await _client.PostAsync(postRelativeUri, content).ConfigureAwait(false);
         }
 
 
-
-        [Then(@"the response should be a status code of '(.*)'")]
-        public void ThenTheResponseShouldBeAStatusCodeOf(int statusCode)
+        [Then(@"the response should be this status code of '(.*)'")]
+        public void ThenTheResponseShouldBeThisStatusCodeOf(int statusCode)
         {
             var expectedStatusCode = (HttpStatusCode)statusCode;
             Assert.Equal(expectedStatusCode, Response.StatusCode);

@@ -11,6 +11,7 @@ using EasyStory.API.Domain.Services;
 using EasyStory.API.Extensions;
 using EasyStory.API.Persistence.Repositories;
 using EasyStory.API.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EasyStory.API
 {
@@ -27,10 +28,16 @@ namespace EasyStory.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+            //CORS configuration
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder => builder.AllowAnyOrigin());
+            });
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddDbContext<AppDbContext>(options =>
             {
-                // options.UseInMemoryDatabase("supermarket-api-in-memory");
+                
                 options.UseMySQL(Configuration.GetConnectionString("MySQLConnection"));
             });
 
@@ -74,6 +81,13 @@ namespace EasyStory.API
             }
 
             app.UseHttpsRedirection();
+            //CORS configuration
+            app.UseCors(options =>
+            {
+                options.WithOrigins("htpp://localhost:8080");
+                options.AllowAnyMethod();
+                options.AllowAnyHeader();
+            });
 
             app.UseRouting();
 

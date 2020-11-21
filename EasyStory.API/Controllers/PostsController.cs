@@ -60,7 +60,7 @@ namespace EasyStory.API.Controllers
         {
             var post = await _postService.GetByIdAsync(postId);
             if (!post.Success)
-                return BadRequest(post.Message);
+                return NotFound(post.Message);
             var resource = _mapper.Map<Post, PostResource>(post.Resource);
             return Ok(resource);
         }

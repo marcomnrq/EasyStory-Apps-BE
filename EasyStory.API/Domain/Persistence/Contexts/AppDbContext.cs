@@ -36,7 +36,7 @@ namespace EasyStory.API.Domain.Persistence.Contexts
             builder.Entity<User>().HasMany(p => p.Bookmarks).WithOne(p => p.User).HasForeignKey(p => p.UserId);
             builder.Entity<User>().HasMany(p => p.Comments).WithOne(p => p.User).HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Cascade);
             builder.Entity<User>().HasMany(p => p.Subscribeds).WithOne(p => p.Subscribed).HasForeignKey(p => p.SubscribedId).OnDelete(DeleteBehavior.Cascade);
-            builder.Entity<User>().HasMany(p => p.Subscribers).WithOne(p => p.Subscriber).HasForeignKey(p => p.SubscriberId).OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<User>().HasMany(p => p.Users).WithOne(p => p.User).HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Cascade);
 
             //Comment Entity
             builder.Entity<Comment>().ToTable("Comments");
@@ -104,11 +104,11 @@ namespace EasyStory.API.Domain.Persistence.Contexts
 
             //Susbscription Entity
             builder.Entity<Subscription>().ToTable("Subscriptions");
-            builder.Entity<Subscription>().HasKey(p => new {p.SubscriberId,p.SubscribedId });
+            builder.Entity<Subscription>().HasKey(p => new {p.UserId,p.SubscribedId });
             builder.Entity<Subscription>()
-                .HasOne(p => p.Subscriber)
-                .WithMany(p => p.Subscribers)
-                .HasForeignKey(p => p.SubscriberId);
+                .HasOne(p => p.User)
+                .WithMany(p => p.Users)
+                .HasForeignKey(p => p.UserId);
            builder.Entity<Subscription>()
                 .HasOne(p => p.Subscribed)
                 .WithMany(p => p.Subscribeds)

@@ -1,16 +1,16 @@
 ﻿Feature: CommentCreation
-	In order to visualize recommendations
+	In order to give recommendations
 	As a user
-	I want to be able to view a comment in a post
+	I want to be able to comment a  post
 
 @mytag
-Scenario: Comments were found
-	Given I am a reader/writer
-	When I make a get comment request to 'api/posts/1/comments'
-	Then the response should be a status code of '200'
+Scenario: Comment was published
+	Given I am a reader or writer
+	When I  make a post comment request to 'api/users/' with the user id of '1' and request '/posts/' with post id of '2' and request '/comments' with the data: '{ "Content" : "Buenardo" }'
+	Then the response should be this status code of '200'
 
 
-Scenario: Comments not found
-	Given I am a reader/writer
-	When I make a get comment request to 'api/posts/9/comments'
-	Then the response should be a status code of '200'
+Scenario: Comment not found
+	Given I am a reader or writer
+	When I  make a post comment request to 'api/users/' with the user id of '1' and request '/posts/' with post id of '8' and request '/comments' with the data: '{ "Content" : "Buenardo" }'
+	Then the response should be this status code of '400'

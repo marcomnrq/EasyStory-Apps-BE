@@ -114,9 +114,6 @@ C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\bin\Debug\netcoreapp
 C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.csprojAssemblyReference.cache
 C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.AssemblyInfoInputs.cache
 C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.AssemblyInfo.cs
-C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.csproj.CoreCompileInputs.cache
-C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.RazorTargetAssemblyInfo.cache
 C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.csproj.CopyComplete
 C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\staticwebassets\EasyStory.API.StaticWebAssets.Manifest.cache
@@ -124,3 +121,6 @@ C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp
 C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.dll
 C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.pdb
 C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.genruntimeconfig.cache
+C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.csproj.CoreCompileInputs.cache
+C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.MvcApplicationPartsAssemblyInfo.cache

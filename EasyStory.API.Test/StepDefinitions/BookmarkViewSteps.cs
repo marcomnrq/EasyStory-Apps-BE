@@ -35,12 +35,21 @@ namespace EasyStory.API.Test.StepDefinitions
             });
         }
 
-        [When(@"I make a get bookmark request to '(.*)' with the user id of '(.*)' and request '(.*)'")]
-        public async Task WhenIMakeAGetBookmarkRequestToWithTheUserIdOfAndRequest(string endpointUser, long userId, string endpointBookmark)
+        [When(@"I make a new get bookmark request to '(.*)' with the user id of '(.*)' and request '(.*)'")]
+        public async Task WhenIMakeANewGetBookmarkRequestToWithTheUserIdOfAndRequest(string endpointUser, long userId, string endpointBookmark)
         {
             var postRelativeUri = new Uri(endpointUser + userId + endpointBookmark, UriKind.Relative);
             Response = await _client.GetAsync(postRelativeUri).ConfigureAwait(false);
         }
+
+
+        [When(@"I make a new get bookmark request to '(.*)' with the user id of '(.*)' and request '(.*)' with the post id of '(.*)' and request '(.*)'")]
+        public async Task WhenIMakeANewGetBookmarkRequestToWithTheUserIdOfAndRequestWithThePostIdOfAndRequest(string endpointUser, long userId, string endpointPost, long postId, string endpointBookmark)
+        {
+            var postRelativeUri = new Uri(endpointUser + userId + endpointPost + postId + endpointBookmark, UriKind.Relative);
+            Response = await _client.GetAsync(postRelativeUri).ConfigureAwait(false);
+        }
+
 
         [Then(@"the result should be (.*)")]
         public void ThenTheResultShouldBe(int statusCode)

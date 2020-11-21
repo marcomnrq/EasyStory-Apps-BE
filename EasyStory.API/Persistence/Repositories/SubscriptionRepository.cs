@@ -21,19 +21,19 @@ namespace EasyStory.API.Persistence.Repositories
             await _context.Subscriptions.AddAsync(subscription); ;
         }
 
-        public async Task AssignSubscription(long subscriberId, long subscribedId)
+        public async Task AssignSubscription(long userId, long subscribedId)
         {
-            Subscription subscription = await FindBySubscriberIdAndSubscribedId(subscriberId, subscribedId);
+            Subscription subscription = await FindBySubscriberIdAndSubscribedId(userId, subscribedId);
             if (subscription == null)
             {
-                subscription = new Subscription { SubscriberId = subscriberId, SubscribedId = subscribedId };
+                subscription = new Subscription { UserId = userId, SubscribedId = subscribedId };
                 await AddAsync(subscription);
             }
         }
 
-        public async  Task<Subscription> FindBySubscriberIdAndSubscribedId(long subscriberId, long subscribedId)
+        public async  Task<Subscription> FindBySubscriberIdAndSubscribedId(long userId, long subscribedId)
         {
-            return await _context.Subscriptions.FindAsync(subscriberId, subscribedId);
+            return await _context.Subscriptions.FindAsync(userId, subscribedId);
         }
 
         public async Task<IEnumerable<Subscription>> ListAsync()
@@ -45,16 +45,16 @@ namespace EasyStory.API.Persistence.Repositories
         {
             return await _context.Subscriptions
                 .Where(p => p.SubscribedId == subscribedId)
-                .Include(p => p.Subscriber)
+                .Include(p => p.User)
                 .Include(p => p.Subscribed)
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Subscription>> ListBySubscriberIdAsync(long subscriberId)
+        public async Task<IEnumerable<Subscription>> ListBySubscriberIdAsync(long userId)
         {
             return await _context.Subscriptions
-                .Where(p => p.SubscriberId == subscriberId)
-                .Include(p => p.Subscriber)
+                .Where(p => p.UserId == userId)
+                .Include(p => p.User)
                 .Include(p => p.Subscribed)
                 .ToListAsync();
         }
@@ -64,9 +64,9 @@ namespace EasyStory.API.Persistence.Repositories
             _context.Subscriptions.Remove(subscription);
         }
 
-        public async void UnassignSubscription(long subscriberId, long subscribedId)
+        public async void UnassignSubscription(long userId, long subscribedId)
         {
-           Subscription subscription = await FindBySubscriberIdAndSubscribedId(subscriberId, subscribedId);
+           Subscription subscription = await FindBySubscriberIdAndSubscribedId(userId, subscribedId);
             if (subscription != null)
             {
                 Remove(subscription);

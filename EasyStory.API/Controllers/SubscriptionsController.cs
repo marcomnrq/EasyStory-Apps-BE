@@ -43,19 +43,36 @@ namespace EasyStory.API.Controllers
             var resources = _mapper.Map<IEnumerable<Subscription>, IEnumerable<SubscriptionResource>>(subscriptions);
             return resources;
         }
-
+        
         [SwaggerOperation(
             Summary = "List all Subscriptions of a Reader",
             Description = "List of Subscriptions of a Reader",
             OperationId = "ListAllSubscriptionsOfAReader"
         )]
         [SwaggerResponse(200, "List of Subscriptions for a Reader", typeof(SubscriptionResource))]
-        [HttpGet("subscriber/{subscriberId}/subscribed")]
-        public async Task<IEnumerable<UserResource>> GetAllBySubscriberIdAsync(long subscriberId)
+        [HttpGet("users/{userId}/subscriptions")]
+        public async Task<IEnumerable<UserResource>> GetAllBySubscriberIdAsync(long userId)
         {
-            var subscribed = await _userService.ListBySubscriberIdAsync(subscriberId);
+ 
+            var subscribed = await _userService.ListBySubscriberIdAsync(userId);
             var resources = _mapper.Map<IEnumerable<User>, IEnumerable<UserResource>>(subscribed);
             return resources;
+        }
+
+        [SwaggerOperation(
+            Summary = "Get Subscription by UserId And SubscribedId",
+            Description = "Get Subscription by UserId And SubscribedId",
+            OperationId = "GetSubscriptionByUserIdAndSubscribedId"
+        )]
+        [SwaggerResponse(200, "List of Subscriptions for a User and Subscribed", typeof(IEnumerable<SubscriptionResource>))]
+        [HttpGet("users/{userId}/subscriptions/{subscribedId}")]
+        public async Task<IActionResult> GetSubscriptionByUserIdAndSubscribedId(long userId, long subscribedId)
+        {
+            var subscription = await _subscriptionService.GetBySubscriberIdAndSubscribedIdAsync(userId, subscribedId);
+            if (!subscription.Success)
+                return NotFound(subscription.Message);
+            var resource = _mapper.Map<Subscription, SubscriptionResource>(subscription.Resource);
+            return Ok(resource);
         }
 
         [SwaggerOperation(
@@ -64,13 +81,13 @@ namespace EasyStory.API.Controllers
             OperationId = "AssignSubscription"
         )]
         [SwaggerResponse(200, "Subscription was Assigned", typeof(SubscriptionResource))]
-        [HttpPost("subscriber/{subscriberId}/subscribed/{subscribedId}")]
-        public async Task<IActionResult> AssignSubscriberSubscribed([FromBody] SaveSubscriptionResource subscriptionResource, long subscriberId, long subscribedId)
+        [HttpPost("users/{userId}/subscriptions/{subscribedId}")]
+        public async Task<IActionResult> AssignSubscriberSubscribed([FromBody] SaveSubscriptionResource subscriptionResource, long userId, long subscribedId)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
             var subscription = _mapper.Map<SaveSubscriptionResource, Subscription>(subscriptionResource);
-            var result = await _subscriptionService.AssignSubscriberSubscribedAsync(subscription,subscriberId, subscribedId);
+            var result = await _subscriptionService.AssignSubscriberSubscribedAsync(subscription,userId, subscribedId);
             if (!result.Success)
                 return BadRequest(result.Message);
 
@@ -85,10 +102,10 @@ namespace EasyStory.API.Controllers
             OperationId = "UnassignSubscription"
         )]
         [SwaggerResponse(200, "Subscription was unassigned", typeof(SubscriptionResource))]
-        [HttpDelete("subscriber/{subscriberId}/subscribed/{subscribedId}")]
-        public async Task<IActionResult> UnassignSubscriberSubscribed(long subscriberId, long subscribedId)
+        [HttpDelete("users/{userId}/subscriptions/{subscribedId}")]
+        public async Task<IActionResult> UnassignSubscriberSubscribed(long userId, long subscribedId)
         {
-            var result = await _subscriptionService.UnassignSubscriberSubscribedAsync(subscriberId, subscribedId);
+            var result = await _subscriptionService.UnassignSubscriberSubscribedAsync(userId, subscribedId);
 
             if (!result.Success)
                 return BadRequest(result.Message);

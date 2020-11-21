@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
 using EasyStory.API.Domain.Models;
@@ -54,9 +55,11 @@ namespace EasyStory.API.Controllers
         public async Task<IEnumerable<PostResource>> GetAllByHashtagIdAsync(long hashtagId)
         {
             var posts = await _postService.ListByHashtagIdAsync(hashtagId);
-            var resources = _mapper.Map<IEnumerable<Post>, IEnumerable<PostResource>>(posts);
-            return resources;
+                var resources = _mapper.Map<IEnumerable<Post>, IEnumerable<PostResource>>(posts);
+                return resources;
+            
         }
+
 
         [SwaggerOperation(
             Summary = "Assign Hashtag to Post",

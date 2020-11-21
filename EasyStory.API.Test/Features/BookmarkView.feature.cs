@@ -113,8 +113,8 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("I am a reader with bookmarks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
- testRunner.When("I make a get bookmark request to \'api/users/\' with the user id of \'1\' and request" +
-                        " \'/bookmarks\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I make a new get bookmark request to \'api/users/\' with the user id of \'2\' and req" +
+                        "uest \'/bookmarks\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
  testRunner.Then("the result should be 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -155,11 +155,11 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("I am a reader with bookmarks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 13
- testRunner.When("I make a get bookmark request to \'api/users/\' with the user id of \'9\' and request" +
-                        " \'/bookmarks\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I make a new get bookmark request to \'api/users/\' with the user id of \'1\' and req" +
+                        "uest \'/posts\' with the post id of \'7\' and request \'/bookmarks\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 14
- testRunner.Then("the result should be 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the result should be 404", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

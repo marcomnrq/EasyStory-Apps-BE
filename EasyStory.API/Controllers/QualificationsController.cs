@@ -83,6 +83,8 @@ namespace EasyStory.API.Controllers
         public async Task<IActionResult> GetQualificationByUserIdAndPostId(long userId, long postId)
         {
             var qualification = await _qualificationService.GetByPostIdandUserIdAsync(userId, postId);
+            if (!qualification.Success)
+                return NotFound(qualification.Message);
             var resource = _mapper.Map<Qualification, QualificationResource>(qualification.Resource);
             return Ok(resource);
         }

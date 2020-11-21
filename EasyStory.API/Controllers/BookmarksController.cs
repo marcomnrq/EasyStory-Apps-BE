@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using AutoMapper;
 using EasyStory.API.Domain.Models;
@@ -7,6 +10,7 @@ using EasyStory.API.Domain.Services;
 using EasyStory.API.Extensions;
 using EasyStory.API.Resources;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace EasyStory.API.Controllers
@@ -39,9 +43,28 @@ namespace EasyStory.API.Controllers
         [HttpGet("users/{userId}/bookmarks")]
         public async Task<IEnumerable<PostResource>> GetAllByUserIdAsync(long userId)
         {
-            var bookmark = await _postService.ListByReaderIdAsync(userId);
-            var resources = _mapper.Map<IEnumerable<Post>, IEnumerable<PostResource>>(bookmark);
-            return resources;
+
+                var bookmark = await _postService.ListByReaderIdAsync(userId);
+                var resources = _mapper.Map<IEnumerable<Post>, IEnumerable<PostResource>>(bookmark);
+                return resources;
+            
+
+        }
+
+        [SwaggerOperation(
+            Summary = "Get Bookmark by UserId And PostId",
+            Description = "Get Bookmark by UserId And PostId",
+            OperationId = "GetBoomarkByUserIdAndPostId"
+        )]
+        [SwaggerResponse(200, "List of Bookmarks for a User and Post", typeof(IEnumerable<BookmarkResource>))]
+        [HttpGet("users/{userId}/posts/{postId}/bookmarks")]
+        public async Task<IActionResult> GetBookmarkByUserIdAndPostId(long userId, long postId)
+        {
+            var bookmark = await _bookmarkService.GetByUserIdAndPostIdAsync(userId, postId);
+            if (!bookmark.Success)
+                return NotFound(bookmark.Message);
+            var resource = _mapper.Map<Bookmark, BookmarkResource>(bookmark.Resource);
+            return Ok(resource);
         }
 
         [SwaggerOperation(

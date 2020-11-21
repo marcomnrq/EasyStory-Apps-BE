@@ -9,12 +9,12 @@ namespace EasyStory.API.Domain.Repositories
     public interface ISubscriptionRepository
     {
         Task<IEnumerable<Subscription>> ListAsync();
-        Task<IEnumerable<Subscription>> ListBySubscriberIdAsync(long subscriberId);
+        Task<IEnumerable<Subscription>> ListBySubscriberIdAsync(long userId);
         Task<IEnumerable<Subscription>> ListBySubscribedIdAsync(long subscribedId);
-        Task<Subscription> FindBySubscriberIdAndSubscribedId(long subscriberId, long subscribedId);
+        Task<Subscription> FindBySubscriberIdAndSubscribedId(long userId, long subscribedId);
         Task AddAsync(Subscription subscription);
         void Remove(Subscription subscription);
-        Task AssignSubscription(long subscriberId, long subscribedId);
-        void UnassignSubscription(long subscriberId, long subscribedId);
+        Task AssignSubscription(long userId, long subscribedId);
+        void UnassignSubscription(long userId, long subscribedId);
     }
 }

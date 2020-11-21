@@ -16,7 +16,7 @@ namespace EasyStory.API.Domain.Models
         public IList<Bookmark> Bookmarks { get; set; } = new List<Bookmark>();
 
         public IList<Subscription> Subscribeds { get; set; } = new List<Subscription>();
-        public IList<Subscription> Subscribers { get; set; } = new List<Subscription>();
+        public IList<Subscription> Users { get; set; } = new List<Subscription>();
 
         public IList<Comment> Comments { get; set; } = new List<Comment>();
     }

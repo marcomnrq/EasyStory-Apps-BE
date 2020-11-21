@@ -4,7 +4,12 @@
 	I want to be able to assign a qualification to a post
 
 
-Scenario: Get a Qualification
+Scenario: Qualification found
 	Given I am a Client
-	When I  make a get request to 'api/users/' with the user id of '2' and request '/posts/' with post id of '4' and request '/qualifications'
+	When I  make a get request to 'api/users/' with the user id of '1' and request '/posts/' with post id of '2' and request '/qualifications'
 	Then the result of status code is '200'
+
+Scenario: Qualification not found
+    Given I am a Client
+	When I  make a get request to 'api/users/' with the user id of '5' and request '/posts/' with post id of '8' and request '/qualifications'
+	Then the result of status code is '404'

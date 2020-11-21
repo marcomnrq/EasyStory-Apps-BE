@@ -40,8 +40,8 @@ namespace EasyStory.API.Test.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "CommentCreation", "\tIn order to visualize recommendations\r\n\tAs a user\r\n\tI want to be able to view a " +
-                    "comment in a post", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "CommentCreation", "\tIn order to give recommendations\r\n\tAs a user\r\n\tI want to be able to comment a  p" +
+                    "ost", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,16 +81,16 @@ namespace EasyStory.API.Test.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Comments were found")]
+        [Xunit.SkippableFactAttribute(DisplayName="Comment was published")]
         [Xunit.TraitAttribute("FeatureTitle", "CommentCreation")]
-        [Xunit.TraitAttribute("Description", "Comments were found")]
+        [Xunit.TraitAttribute("Description", "Comment was published")]
         [Xunit.TraitAttribute("Category", "mytag")]
-        public virtual void CommentsWereFound()
+        public virtual void CommentWasPublished()
         {
             string[] tagsOfScenario = new string[] {
                     "mytag"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Comments were found", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Comment was published", null, tagsOfScenario, argumentsOfScenario);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -112,26 +112,28 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 8
- testRunner.Given("I am a reader/writer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a reader or writer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 9
- testRunner.When("I make a get comment request to \'api/posts/1/comments\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I  make a post comment request to \'api/users/\' with the user id of \'1\' and reques" +
+                        "t \'/posts/\' with post id of \'2\' and request \'/comments\' with the data: \'{ \"Conte" +
+                        "nt\" : \"Buenardo\" }\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
- testRunner.Then("the response should be a status code of \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the response should be this status code of \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Comments not found")]
+        [Xunit.SkippableFactAttribute(DisplayName="Comment not found")]
         [Xunit.TraitAttribute("FeatureTitle", "CommentCreation")]
-        [Xunit.TraitAttribute("Description", "Comments not found")]
-        public virtual void CommentsNotFound()
+        [Xunit.TraitAttribute("Description", "Comment not found")]
+        public virtual void CommentNotFound()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Comments not found", null, tagsOfScenario, argumentsOfScenario);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Comment not found", null, tagsOfScenario, argumentsOfScenario);
 #line 13
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -153,13 +155,15 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 14
- testRunner.Given("I am a reader/writer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a reader or writer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 15
- testRunner.When("I make a get comment request to \'api/posts/9/comments\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I  make a post comment request to \'api/users/\' with the user id of \'1\' and reques" +
+                        "t \'/posts/\' with post id of \'8\' and request \'/comments\' with the data: \'{ \"Conte" +
+                        "nt\" : \"Buenardo\" }\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 16
- testRunner.Then("the response should be a status code of \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the response should be this status code of \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

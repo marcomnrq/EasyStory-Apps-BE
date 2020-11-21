@@ -19,7 +19,7 @@ namespace EasyStory.API.Test.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class SubscriptionVisualizationFeature : object, Xunit.IClassFixture<SubscriptionVisualizationFeature.FixtureData>, System.IDisposable
+    public partial class AccountCreationFeature : object, Xunit.IClassFixture<AccountCreationFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace EasyStory.API.Test.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "SubscriptionVisualization.feature"
+#line 1 "AccountCreation.feature"
 #line hidden
         
-        public SubscriptionVisualizationFeature(SubscriptionVisualizationFeature.FixtureData fixtureData, EasyStory_API_Test_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public AccountCreationFeature(AccountCreationFeature.FixtureData fixtureData, EasyStory_API_Test_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace EasyStory.API.Test.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "SubscriptionVisualization", "\tIn order to manage my access to content\r\n\tAs a user\r\n\tI want to see my subscript" +
-                    "ions", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "AccountCreation", "\tIn order to set up a new user account \r\n\tAs a client application\r\n\tI want to be " +
+                    "able to create and update a user ", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,17 +81,15 @@ namespace EasyStory.API.Test.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Subscriptions were found")]
-        [Xunit.TraitAttribute("FeatureTitle", "SubscriptionVisualization")]
-        [Xunit.TraitAttribute("Description", "Subscriptions were found")]
-        [Xunit.TraitAttribute("Category", "mytag")]
-        public virtual void SubscriptionsWereFound()
+        [Xunit.SkippableFactAttribute(DisplayName="Account was created")]
+        [Xunit.TraitAttribute("FeatureTitle", "AccountCreation")]
+        [Xunit.TraitAttribute("Description", "Account was created")]
+        public virtual void AccountWasCreated()
         {
-            string[] tagsOfScenario = new string[] {
-                    "mytag"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Subscriptions were found", null, tagsOfScenario, argumentsOfScenario);
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Account was created", null, tagsOfScenario, argumentsOfScenario);
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -111,29 +109,30 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 7
+testRunner.Given("I am a client", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 8
- testRunner.Given("I am a user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.When("I make a post request to \'api/users\' with the following data \'{ \"Username\" : \"moo" +
+                        "nloght\", \"Email\" : \"arrob@.com\", \"Password\" : \"easysstoryy\", \"FirstName\" : \"Gonz" +
+                        "alo\", \"LastName\" : \"nosexdxd\"}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.When("I make a get subscription request to \'api/users/\' with the user id of \'1\' and req" +
-                        "uest \'/subscriptions/\' with the subscribed id of \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 10
- testRunner.Then("the response list should be a status code of \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then("the response status code is \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="No subscriptions were found")]
-        [Xunit.TraitAttribute("FeatureTitle", "SubscriptionVisualization")]
-        [Xunit.TraitAttribute("Description", "No subscriptions were found")]
-        public virtual void NoSubscriptionsWereFound()
+        [Xunit.SkippableFactAttribute(DisplayName="Account could not be created")]
+        [Xunit.TraitAttribute("FeatureTitle", "AccountCreation")]
+        [Xunit.TraitAttribute("Description", "Account could not be created")]
+        public virtual void AccountCouldNotBeCreated()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("No subscriptions were found", null, tagsOfScenario, argumentsOfScenario);
-#line 12
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Account could not be created", null, tagsOfScenario, argumentsOfScenario);
+#line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -153,15 +152,15 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 12
+testRunner.Given("I am a client", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 13
- testRunner.Given("I am a user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.When("I make a post request to \'api/users\' with the following data \'{ \"FirstName\" : \"Go" +
+                        "nzalo\", \"LastName\" : \"Miranda\"}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 14
- testRunner.When("I make a get subscription request to \'api/users/\' with the user id of \'3\' and req" +
-                        "uest \'/subscriptions/\' with the subscribed id of \'9\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 15
- testRunner.Then("the response list should be a bad status code of \'404\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then("the response status code is \'400\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -174,12 +173,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                SubscriptionVisualizationFeature.FeatureSetup();
+                AccountCreationFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                SubscriptionVisualizationFeature.FeatureTearDown();
+                AccountCreationFeature.FeatureTearDown();
             }
         }
     }

@@ -19,9 +19,9 @@ namespace EasyStory.API.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<SubscriptionResponse> AssignSubscriberSubscribedAsync(Subscription subscription, long subscriberId, long subscribedId)
+        public async Task<SubscriptionResponse> AssignSubscriberSubscribedAsync(Subscription subscription, long userId, long subscribedId)
         {
-            subscription.SubscriberId = subscriberId;
+            subscription.UserId = userId;
             subscription.SubscribedId = subscribedId;
             try
             {
@@ -36,9 +36,9 @@ namespace EasyStory.API.Services
             }
         }
 
-        public async Task<SubscriptionResponse> GetBySubscriberIdAndSubscribedIdAsync(long subscriberId, long subscribedId)
+        public async Task<SubscriptionResponse> GetBySubscriberIdAndSubscribedIdAsync(long userId, long subscribedId)
         {
-            var existingSubscription = await _subscriptionRepository.FindBySubscriberIdAndSubscribedId(subscriberId,subscribedId);
+            var existingSubscription = await _subscriptionRepository.FindBySubscriberIdAndSubscribedId(userId,subscribedId);
             if (existingSubscription == null)
                 return new SubscriptionResponse("Subscription not found");
             return new SubscriptionResponse(existingSubscription);
@@ -54,16 +54,16 @@ namespace EasyStory.API.Services
             return await _subscriptionRepository.ListBySubscribedIdAsync(subscribedId);
         }
 
-        public async Task<IEnumerable<Subscription>> ListBySubscriberIdAsync(long subscriberId)
+        public async Task<IEnumerable<Subscription>> ListBySubscriberIdAsync(long userId)
         {
-            return await _subscriptionRepository.ListBySubscriberIdAsync(subscriberId);
+            return await _subscriptionRepository.ListBySubscriberIdAsync(userId);
         }
 
-        public async Task<SubscriptionResponse> UnassignSubscriberSubscribedAsync(long subscriberId, long subscribedId)
+        public async Task<SubscriptionResponse> UnassignSubscriberSubscribedAsync(long userId, long subscribedId)
         {
             try
             {
-                Subscription subscription = await _subscriptionRepository.FindBySubscriberIdAndSubscribedId(subscriberId, subscribedId);
+                Subscription subscription = await _subscriptionRepository.FindBySubscriberIdAndSubscribedId(userId, subscribedId);
                 _subscriptionRepository.Remove(subscription);
                 await _unitOfWork.CompleteAsync();
                 return new SubscriptionResponse(subscription);
