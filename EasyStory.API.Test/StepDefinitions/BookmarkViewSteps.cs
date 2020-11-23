@@ -33,6 +33,7 @@ namespace EasyStory.API.Test.StepDefinitions
             {
                 BaseAddress = new Uri($"https://localhost/")
             });
+            
         }
 
         [When(@"I make a new get bookmark request to '(.*)' with the user id of '(.*)' and request '(.*)'")]

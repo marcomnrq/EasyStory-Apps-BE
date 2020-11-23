@@ -7,7 +7,7 @@
 @mytag
 Scenario: Post was found
 	Given I am a reader
-	When I make a get the post request to 'api/posts/' with the post id of '2'
+	When I make a get the post request to 'api/posts/' with the post id of '1'
 	Then the result should be a status code of '200'
 
 Scenario: Post was not found

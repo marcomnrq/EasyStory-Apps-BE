@@ -14,5 +14,6 @@ namespace EasyStory.API.Domain.Repositories
         Task<User> FindById(long id);
         void Update(User user);
         void Remove(User user);
+        Task<User> Authenticate(string username, string password);
     }
 }

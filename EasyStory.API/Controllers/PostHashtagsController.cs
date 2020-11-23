@@ -7,6 +7,7 @@ using AutoMapper;
 using EasyStory.API.Domain.Models;
 using EasyStory.API.Domain.Services;
 using EasyStory.API.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -66,7 +67,7 @@ namespace EasyStory.API.Controllers
             Description = "Assign Hashtag to Post",
             OperationId = "AssignHashtagToPost"
         )]
-        [SwaggerResponse(200, "List of Subscriptions", typeof(IEnumerable<SubscriptionResource>))]
+        [SwaggerResponse(200, "Assign Hashtag to Post", typeof(IEnumerable<PostResource>))]
         [HttpPost("posts/{postId}/hashtags/{hashtagId}")]
         public async Task<IActionResult> AssignPostHashtag(long postId, long hashtagId)
         {
@@ -84,7 +85,7 @@ namespace EasyStory.API.Controllers
             Description = "Unassign Hashtag to Post",
             OperationId = "UnassignHashtagToPost"
         )]
-        [SwaggerResponse(200, "List of Subscriptions", typeof(IEnumerable<SubscriptionResource>))]
+        [SwaggerResponse(200, "Unassign Hashtag to Post", typeof(IEnumerable<HashtagResource>))]
         [HttpDelete("posts/{postId}/hashtags/{hashtagId}")]
         public async Task<IActionResult> UnassignPostHashtag(long postId, long hashtagId)
         {

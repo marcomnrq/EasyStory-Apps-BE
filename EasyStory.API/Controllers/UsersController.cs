@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using EasyStory.API.Domain.Models;
 using EasyStory.API.Domain.Services;
+using EasyStory.API.Domain.Services.Communications;
 using EasyStory.API.Extensions;
 using EasyStory.API.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -12,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace EasyStory.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Produces("application/json")]
     [Route("api/[controller]")]
@@ -25,6 +28,19 @@ namespace EasyStory.API.Controllers
             _userService = userService;
             _mapper = mapper;
         }
+
+        [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public async Task<IActionResult> Authenticate([FromBody] AuthenticationRequest request)
+        {
+            var response = await _userService.Authenticate(request);
+
+            if (response == null)
+                return BadRequest(new { message = "Invalid Username or Password" });
+
+            return Ok(response);
+        }
+
         [SwaggerOperation(
             Summary = "List all Users",
             Description = "List of Users",
@@ -49,6 +65,7 @@ namespace EasyStory.API.Controllers
             return Ok(resource);
         }
         [SwaggerResponse(200, "User was created", typeof(UserResource))]
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> PostUserAsync([FromBody] SaveUserResource userResource)
         {

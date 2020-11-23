@@ -3,6 +3,7 @@ using EasyStory.API.Domain.Models;
 using EasyStory.API.Domain.Services;
 using EasyStory.API.Extensions;
 using EasyStory.API.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace EasyStory.API.Controllers
 {
+
     [ApiController]
     [Produces("application/json")]
     [Route("api/[controller]")]

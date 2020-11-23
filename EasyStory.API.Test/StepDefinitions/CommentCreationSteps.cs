@@ -12,7 +12,7 @@ using Xunit;
 namespace EasyStory.API.Test.StepDefinitions
 {
     [Binding]
-    public sealed class CommentCreationSteps : IClassFixture<WebApplicationFactory<TestStartup>>
+    public class CommentCreationSteps : IClassFixture<WebApplicationFactory<TestStartup>>
     {
         // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
 

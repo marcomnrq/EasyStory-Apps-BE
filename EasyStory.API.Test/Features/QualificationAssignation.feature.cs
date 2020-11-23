@@ -114,7 +114,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 9
  testRunner.When("I  make a get request to \'api/users/\' with the user id of \'1\' and request \'/posts" +
-                        "/\' with post id of \'2\' and request \'/qualifications\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+                        "/\' with post id of \'1\' and request \'/qualifications\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
  testRunner.Then("the result of status code is \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

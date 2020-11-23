@@ -6,7 +6,7 @@
 @mytag
 Scenario: Subscriptions were found
 	Given I am a user
-	When I make a get subscription request to 'api/users/' with the user id of '1' and request '/subscriptions/' with the subscribed id of '2'
+	When I make a get subscription request to 'api/users/' with the user id of '1' and request '/subscriptions/' with the subscribed id of '3'
 	Then the response list should be a status code of '200'
 	
 Scenario: No subscriptions were found

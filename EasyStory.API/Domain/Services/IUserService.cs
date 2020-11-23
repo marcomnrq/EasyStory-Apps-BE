@@ -17,5 +17,6 @@ namespace EasyStory.API.Domain.Services
         Task<UserResponse> SaveUserAsync(User user);
         Task<UserResponse> UpdateUserAsync(long id, User user);
         Task<UserResponse> DeleteUserAsync(long id);
+        Task<AuthenticationResponse> Authenticate(AuthenticationRequest request);
     }
 }

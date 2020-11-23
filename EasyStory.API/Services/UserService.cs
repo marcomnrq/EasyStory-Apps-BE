@@ -2,9 +2,15 @@
 using EasyStory.API.Domain.Repositories;
 using EasyStory.API.Domain.Services;
 using EasyStory.API.Domain.Services.Communications;
+using EasyStory.API.Settings;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyStory.API.Services
@@ -15,13 +21,51 @@ namespace EasyStory.API.Services
         private readonly ISubscriptionRepository _subscriptionRepository;
         private readonly IBookmarkRepository _bookmarkRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork, ISubscriptionRepository subscriptionRepository, IBookmarkRepository bookmarkRepository)
+        private readonly AppSettings _appSettings;
+        public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork, ISubscriptionRepository subscriptionRepository, IBookmarkRepository bookmarkRepository, IOptions<AppSettings> appSettings)
         {
             _subscriptionRepository = subscriptionRepository;
             _userRepository = userRepository;
             _bookmarkRepository = bookmarkRepository;
             _unitOfWork = unitOfWork;
+            _appSettings = appSettings.Value;
         }
+
+        public async Task<AuthenticationResponse> Authenticate(AuthenticationRequest request)
+        {
+            // TODO: Implement Repository-base behavior
+            var user = await _userRepository.Authenticate(request.Username, request.Password);
+
+            // Return when user not found
+            if (user == null) return null;
+
+            var token = GenerateJwtToken(user);
+
+            return new AuthenticationResponse(user, token);
+        }
+
+
+        private string GenerateJwtToken(User user)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+
+            // Setup Security Token Descriptor
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            return tokenHandler.WriteToken(token);
+        }
+
 
         public async Task<UserResponse> DeleteUserAsync(long id)
         {

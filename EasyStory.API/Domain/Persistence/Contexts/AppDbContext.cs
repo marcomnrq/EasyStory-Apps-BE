@@ -28,8 +28,10 @@ namespace EasyStory.API.Domain.Persistence.Contexts
             builder.Entity<User>().HasKey(p => p.Id);
             builder.Entity<User>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<User>().Property(p => p.Username).IsRequired().HasMaxLength(30);
+            builder.Entity<User>().HasIndex(p => p.Username).IsUnique();
             builder.Entity<User>().Property(p => p.Password).IsRequired().HasMaxLength(30);
             builder.Entity<User>().Property(p => p.Email).IsRequired().HasMaxLength(30);
+            builder.Entity<User>().HasIndex(p => p.Email).IsUnique();
             builder.Entity<User>().Property(p => p.FirstName).IsRequired().HasMaxLength(30);
             builder.Entity<User>().Property(p => p.LastName).IsRequired().HasMaxLength(30);
             builder.Entity<User>().HasMany(p => p.Posts).WithOne(p => p.User).HasForeignKey(p =>p.UserId).OnDelete(DeleteBehavior.Cascade);

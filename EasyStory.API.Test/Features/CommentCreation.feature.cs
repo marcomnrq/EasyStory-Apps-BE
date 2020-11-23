@@ -116,7 +116,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 9
  testRunner.When("I  make a post comment request to \'api/users/\' with the user id of \'1\' and reques" +
-                        "t \'/posts/\' with post id of \'2\' and request \'/comments\' with the data: \'{ \"Conte" +
+                        "t \'/posts/\' with post id of \'1\' and request \'/comments\' with the data: \'{ \"Conte" +
                         "nt\" : \"Buenardo\" }\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10

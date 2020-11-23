@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace EasyStory.API.Domain.Models
 {
@@ -8,9 +9,12 @@ namespace EasyStory.API.Domain.Models
         public long Id { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
+        [JsonIgnore]
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [JsonIgnore]
+        public string Token { get; set; }
 
         public IList<Post> Posts { get; set; } = new List<Post>();
         public IList<Bookmark> Bookmarks { get; set; } = new List<Bookmark>();

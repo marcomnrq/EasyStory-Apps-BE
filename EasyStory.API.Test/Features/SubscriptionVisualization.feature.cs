@@ -116,7 +116,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 9
  testRunner.When("I make a get subscription request to \'api/users/\' with the user id of \'1\' and req" +
-                        "uest \'/subscriptions/\' with the subscribed id of \'2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+                        "uest \'/subscriptions/\' with the subscribed id of \'3\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
  testRunner.Then("the response list should be a status code of \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

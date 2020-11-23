@@ -36,7 +36,6 @@ namespace EasyStory.API.Test.StepDefinitions
             });
         }
 
-       
         [When(@"I make a get the post request to '(.*)' with the post id of '(.*)'")]
         public async Task WhenIMakeAGetThePostRequestToWithThePostIdOf(string endpoint, long postId)
         {

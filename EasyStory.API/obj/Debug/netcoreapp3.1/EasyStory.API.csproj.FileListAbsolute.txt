@@ -121,6 +121,14 @@ C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp
 C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.dll
 C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.pdb
 C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.genruntimeconfig.cache
+C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.csproj.CoreCompileInputs.cache
 C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Goncho\Desktop\TB4\EasyStory-Apps-BE\EasyStory.API\obj\Debug\netcoreapp3.1\EasyStory.API.MvcApplicationPartsAssemblyInfo.cache
