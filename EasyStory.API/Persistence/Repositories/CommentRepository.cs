@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using EasyStory.API.Domain.Models;
 using EasyStory.API.Domain.Persistence.Contexts;
 using EasyStory.API.Domain.Repositories;
+using System.Linq;
 
 namespace EasyStory.API.Persistence.Repositories
 {
@@ -24,10 +25,32 @@ namespace EasyStory.API.Persistence.Repositories
             return await _context.Comments.FindAsync(id);
         }
 
+        public async Task<Comment> FindByUserIdAndPostId(long userId, long postId)
+        {
+            return await _context.Comments.FindAsync(userId, postId);
+        }
+
         public async Task<IEnumerable<Comment>> ListAsync()
         {
             return await _context.Comments.ToListAsync();
         }
+
+        public async Task<IEnumerable<Comment>> ListByPostIdAsync(long postId)=>
+        
+            await _context.Comments
+                 .Where(p => p.PostId == postId)
+                 .Include(p => p.Post)
+                 .ToListAsync();
+        
+
+        public async Task<IEnumerable<Comment>> ListByUserIdAsync(long userId) =>
+            await _context.Comments
+                .Where(p => p.UserId == userId)
+                .Include(p => p.User)
+                .ToListAsync();
+
+
+
 
         public void Remove(Comment comment)
         {

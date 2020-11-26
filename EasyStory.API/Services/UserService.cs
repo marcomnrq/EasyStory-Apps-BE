@@ -2,9 +2,15 @@
 using EasyStory.API.Domain.Repositories;
 using EasyStory.API.Domain.Services;
 using EasyStory.API.Domain.Services.Communications;
+using EasyStory.API.Settings;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyStory.API.Services
@@ -12,12 +18,54 @@ namespace EasyStory.API.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly ISubscriptionRepository _subscriptionRepository;
+        private readonly IBookmarkRepository _bookmarkRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork)
+        private readonly AppSettings _appSettings;
+        public UserService(IUserRepository userRepository, IUnitOfWork unitOfWork, ISubscriptionRepository subscriptionRepository, IBookmarkRepository bookmarkRepository, IOptions<AppSettings> appSettings)
         {
+            _subscriptionRepository = subscriptionRepository;
             _userRepository = userRepository;
+            _bookmarkRepository = bookmarkRepository;
             _unitOfWork = unitOfWork;
+            _appSettings = appSettings.Value;
         }
+
+        public async Task<AuthenticationResponse> Authenticate(AuthenticationRequest request)
+        {
+            // TODO: Implement Repository-base behavior
+            var user = await _userRepository.Authenticate(request.Username, request.Password);
+
+            // Return when user not found
+            if (user == null) return null;
+
+            var token = GenerateJwtToken(user);
+
+            return new AuthenticationResponse(user, token);
+        }
+
+
+        private string GenerateJwtToken(User user)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+
+            // Setup Security Token Descriptor
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            return tokenHandler.WriteToken(token);
+        }
+
 
         public async Task<UserResponse> DeleteUserAsync(long id)
         {
@@ -49,10 +97,18 @@ namespace EasyStory.API.Services
             return await _userRepository.ListAsync();
         }
 
-        public Task<IEnumerable<User>> ListByUserIdAsync(long postId)
+        public async Task<IEnumerable<User>> ListBySubscriberIdAsync(long subscriberId)
         {
-            // para implementar esta sección se necesita la implementación del servicio  de user
-            throw new NotImplementedException();
+            var subscription = await _subscriptionRepository.ListBySubscriberIdAsync(subscriberId);
+            var subscribed = subscription.Select(p => p.Subscribed).ToList();
+            return subscribed;
+        }
+
+        public async Task<IEnumerable<User>> ListByUserIdAsync(long userId)
+        {
+            var user = await _subscriptionRepository.ListBySubscribedIdAsync(userId);
+            var subscriber = user.Select(p => p.User).ToList();
+            return subscriber;
         }
 
         public async Task<UserResponse> SaveUserAsync(User user)
@@ -69,10 +125,6 @@ namespace EasyStory.API.Services
             }
         }
 
-        public Task<UserResponse> UpdateHUserAsync(long id, User user)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<UserResponse> UpdateUserAsync(long id, User user)
         {
@@ -84,8 +136,8 @@ namespace EasyStory.API.Services
                 existingUser.Username = user.Username;
                 existingUser.Email = user.Email;
                 existingUser.Password = user.Password;
-                existingUser.AccountBalance = user.AccountBalance;
-                existingUser.SubscriptionPrice = user.SubscriptionPrice;
+                existingUser.FirstName = user.FirstName;
+                existingUser.LastName = user.LastName;
                 _userRepository.Update(existingUser);
                 await _unitOfWork.CompleteAsync();
                 return new UserResponse(existingUser);

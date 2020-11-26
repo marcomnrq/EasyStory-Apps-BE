@@ -3,6 +3,7 @@ using EasyStory.API.Domain.Models;
 using EasyStory.API.Domain.Services;
 using EasyStory.API.Extensions;
 using EasyStory.API.Resources;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -12,7 +13,9 @@ using System.Threading.Tasks;
 
 namespace EasyStory.API.Controllers
 {
+
     [ApiController]
+    [Authorize]
     [Produces("application/json")]
     [Route("api/[controller]")]
     public class HashtagsController: ControllerBase
@@ -42,13 +45,14 @@ namespace EasyStory.API.Controllers
         }
         [SwaggerResponse(200, "hashTag was found", typeof(HashtagResource))]
         [HttpGet("{hashtagId}")]
-        public async Task<IActionResult> GetHashtagById(long id)
+        public async Task<IActionResult> GetHashtagById(long hashtagId)
         {
-            var hashtag = await _hashtagService.GetByIdAsync(id);
+            var hashtag = await _hashtagService.GetByIdAsync(hashtagId);
             var resource = _mapper.Map<Hashtag, HashtagResource>(hashtag.Resource);
             return Ok(resource);
         }
         [SwaggerResponse(200, "hashTag was created", typeof(HashtagResource))]
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> PostHashtagAsync([FromBody]SaveHashtagResource hashtagResource)
         {

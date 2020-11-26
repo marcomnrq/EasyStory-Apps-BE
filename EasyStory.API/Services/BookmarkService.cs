@@ -21,56 +21,59 @@ namespace EasyStory.API.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<Bookmark>> ListAsync()
+        public async Task<BookmarkResponse> AssignUserPostAsync(long userId, long postId)
         {
-            return await _bookmarkRepository.ListAsync();
-        }
 
-        public void ListByUserIdAsync(long userId)
-        {
-            //Falta implementar
-            //Error solucionado después de solucionar
-        }
-
-        public async Task<BookmarkResponse> GetByIdAsync(long id)
-        {
-            var existingBookmark = await _bookmarkRepository.FindById(id);
-            if (existingBookmark == null)
+            try
             {
-                return new BookmarkResponse("Bookmark not found");
+                await _bookmarkRepository.AssignBookmark(userId, postId);
+                await _unitOfWork.CompleteAsync();
+                Bookmark bookmark = await _bookmarkRepository.FindByUserIdAndPostId(userId, postId);
+                return new BookmarkResponse(bookmark);
             }
-            return new BookmarkResponse(existingBookmark);
+            catch (Exception ex)
+            {
+                return new BookmarkResponse($"An error ocurred while assigning Bookmark: {ex.Message}");
+            }
         }
 
-        public async Task<BookmarkResponse> SaveBookmarkAsync(Bookmark bookmark)
+        public async Task<IEnumerable<Bookmark>> ListByUserIdAsync(long userId)
+        {
+            return await _bookmarkRepository.ListByUserIdAsync(userId);
+        }
+
+        public async Task<IEnumerable<Bookmark>> ListByPostIdAsync(long postId)
+        {
+            return await _bookmarkRepository.ListByPostIdAsync(postId);
+        }
+
+        public async Task<BookmarkResponse> UnassignUserPostAsync(long userId, long postId)
         {
             try
             {
-                await _bookmarkRepository.AddAsync(bookmark);
+                Bookmark bookmark = await _bookmarkRepository.FindByUserIdAndPostId(userId, postId);
+                _bookmarkRepository.Remove(bookmark);
                 await _unitOfWork.CompleteAsync();
                 return new BookmarkResponse(bookmark);
             }
             catch (Exception ex)
             {
-                return new BookmarkResponse($"An error occurred while saving the bookmark: {ex.Message}");
+                return new BookmarkResponse($"An error ocurred while unassigning Bookmark: {ex.Message}");
             }
         }
 
-        public async Task<BookmarkResponse> DeleteBookmarkAsync(long id)
+        public async Task<IEnumerable<Bookmark>> ListAsync()
         {
-            var existingBookmark = await _bookmarkRepository.FindById(id);
+            return await _bookmarkRepository.ListAsync();
+
+        }
+
+        public async Task<BookmarkResponse> GetByUserIdAndPostIdAsync(long userId, long postId)
+        {
+            var existingBookmark = await _bookmarkRepository.FindByUserIdAndPostId(userId, postId);
             if (existingBookmark == null)
                 return new BookmarkResponse("Bookmark not found");
-            try
-            {
-                _bookmarkRepository.Remove(existingBookmark);
-                await _unitOfWork.CompleteAsync();
-                return new BookmarkResponse(existingBookmark);
-            }
-            catch (Exception ex)
-            {
-                return new BookmarkResponse($"An error occurred while deleting Bookmark: {ex.Message}");
-            }
+            return new BookmarkResponse(existingBookmark);
         }
     }
 }

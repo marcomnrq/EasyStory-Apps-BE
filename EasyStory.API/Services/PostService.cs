@@ -12,10 +12,14 @@ namespace EasyStory.API.Services
     public class PostService:IPostService
     {
         private readonly IPostRepository _postRepository;
+        private readonly IPostHashtagRepository _postHashtagRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public PostService(IPostRepository postRepository, IUnitOfWork unitOfWork)
+        private readonly IBookmarkRepository _bookmarkRepository;
+        public PostService(IPostRepository postRepository, IPostHashtagRepository postHashtagRepository, IBookmarkRepository bookmarkRepository, IUnitOfWork unitOfWork)
         {
             _postRepository = postRepository;
+            _postHashtagRepository = postHashtagRepository;
+            _bookmarkRepository = bookmarkRepository;
             _unitOfWork = unitOfWork;
         }
         public async Task<PostResponse> DeletePostAsync(long id)
@@ -46,6 +50,20 @@ namespace EasyStory.API.Services
         public async Task<IEnumerable<Post>> ListAsync()
         {
             return await _postRepository.ListAsync();
+        }
+
+        public async Task<IEnumerable<Post>> ListByHashtagIdAsync(long hashtagId)
+        {
+            var postHashtags = await _postHashtagRepository.ListByHashtagIdAsync(hashtagId);
+            var posts = postHashtags.Select(p => p.Post).ToList();
+            return posts;
+        }
+
+        public async Task<IEnumerable<Post>> ListByReaderIdAsync(long readerId)
+        {
+            var bookmark = await _bookmarkRepository.ListByUserIdAsync(readerId);
+            var post = bookmark.Select(p => p.Post).ToList();
+            return post;
         }
 
         public async Task<IEnumerable<Post>> ListByUserIdAsync(long userId)

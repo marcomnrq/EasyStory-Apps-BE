@@ -1,10 +1,17 @@
 ﻿using EasyStory.API.Domain.Persistence.Contexts;
+using EasyStory.API.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace EasyStory.API
 {
@@ -25,6 +32,7 @@ namespace EasyStory.API
             {
                 options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
             });
+
             // Do not add custom services here
         }
 
@@ -43,14 +51,15 @@ namespace EasyStory.API
             app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-
+         
         }
-
     }
 }

@@ -15,6 +15,8 @@ namespace EasyStory.API.Mapping
             CreateMap<Hashtag,HashtagResource>();
             CreateMap<Bookmark, BookmarkResource>();
             CreateMap<Comment, CommentResource>();
+            CreateMap<Subscription, SubscriptionResource>();
+            CreateMap<Qualification, QualificationResource>();
 
         }
     }

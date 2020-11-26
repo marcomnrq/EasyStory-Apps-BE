@@ -13,11 +13,13 @@ namespace EasyStory.API.Domain.Persistence.Contexts
         public DbSet<Hashtag>Hashtags { get; set; }
         public DbSet<Bookmark> Bookmarks { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<Qualification> Qualifications { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
-
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -26,13 +28,18 @@ namespace EasyStory.API.Domain.Persistence.Contexts
             builder.Entity<User>().HasKey(p => p.Id);
             builder.Entity<User>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<User>().Property(p => p.Username).IsRequired().HasMaxLength(30);
+            builder.Entity<User>().HasIndex(p => p.Username).IsUnique();
             builder.Entity<User>().Property(p => p.Password).IsRequired().HasMaxLength(30);
             builder.Entity<User>().Property(p => p.Email).IsRequired().HasMaxLength(30);
-            builder.Entity<User>().Property(p => p.AccountBalance).IsRequired();
-            builder.Entity<User>().Property(p => p.SubscriptionPrice).IsRequired();
-            builder.Entity<User>().HasMany(p => p.Posts).WithOne(p => p.User).HasForeignKey(p =>p.UserId);
+            builder.Entity<User>().HasIndex(p => p.Email).IsUnique();
+            builder.Entity<User>().Property(p => p.FirstName).IsRequired().HasMaxLength(30);
+            builder.Entity<User>().Property(p => p.LastName).IsRequired().HasMaxLength(30);
+            builder.Entity<User>().HasMany(p => p.Posts).WithOne(p => p.User).HasForeignKey(p =>p.UserId).OnDelete(DeleteBehavior.Cascade);
             builder.Entity<User>().HasMany(p => p.Bookmarks).WithOne(p => p.User).HasForeignKey(p => p.UserId);
-            
+            builder.Entity<User>().HasMany(p => p.Comments).WithOne(p => p.User).HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<User>().HasMany(p => p.Subscribeds).WithOne(p => p.Subscribed).HasForeignKey(p => p.SubscribedId).OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<User>().HasMany(p => p.Users).WithOne(p => p.User).HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Cascade);
+
             //Comment Entity
             builder.Entity<Comment>().ToTable("Comments");
             builder.Entity<Comment>().HasKey(p => p.Id);
@@ -43,9 +50,15 @@ namespace EasyStory.API.Domain.Persistence.Contexts
 
             //BookMark Entity
             builder.Entity<Bookmark>().ToTable("Bookmarks");
-            builder.Entity<Bookmark>().HasKey(p => p.Id);
-            builder.Entity<Bookmark>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Comment>().Property(p => p.UserId).IsRequired();
+            builder.Entity<Bookmark>().HasKey(p => new { p.UserId, p.PostId });
+            builder.Entity<Bookmark>()
+                .HasOne(p => p.User)
+                .WithMany(p => p.Bookmarks)
+                .HasForeignKey(p => p.UserId);
+            builder.Entity<Bookmark>()
+                .HasOne(p => p.Post)
+                .WithMany(p => p.Posts)
+                .HasForeignKey(p => p.PostId);
 
             // Post Entity
             builder.Entity<Post>().ToTable("Posts");
@@ -62,9 +75,14 @@ namespace EasyStory.API.Domain.Persistence.Contexts
                 .HasMany(p => p.Comments)
                 .WithOne(p => p.Post)
                 .HasForeignKey(p => p.PostId);
-            
-                                  
 
+
+            //Qualification Entity
+            builder.Entity<Qualification>().ToTable("Qualifications");
+            builder.Entity<Qualification>().HasKey(p => new { p.UserId, p.PostId });
+            builder.Entity<Qualification>().Property(p => p.Qualificate).IsRequired();
+            builder.Entity<Qualification>().Property(p => p.PostId).IsRequired();
+            builder.Entity<Qualification>().Property(p => p.UserId).IsRequired();
 
             // Hashtag Entity
             builder.Entity<Hashtag>().ToTable("Hashtags");
@@ -85,7 +103,22 @@ namespace EasyStory.API.Domain.Persistence.Contexts
                 .HasOne(pt => pt.Hashtag)
                 .WithMany(t => t.PostHashtags)
                 .HasForeignKey(pt => pt.HashtagId);
-            
+
+            //Susbscription Entity
+            builder.Entity<Subscription>().ToTable("Subscriptions");
+            builder.Entity<Subscription>().HasKey(p => new {p.UserId,p.SubscribedId });
+            builder.Entity<Subscription>()
+                .HasOne(p => p.User)
+                .WithMany(p => p.Users)
+                .HasForeignKey(p => p.UserId);
+           builder.Entity<Subscription>()
+                .HasOne(p => p.Subscribed)
+                .WithMany(p => p.Subscribeds)
+                .HasForeignKey(p => p.SubscribedId);
+            builder.Entity<Subscription>().Property(p => p.Price)
+                .IsRequired();
+
+
             // Naming convention Policy
             builder.ApplySnakeCaseNamingConvention();
         }

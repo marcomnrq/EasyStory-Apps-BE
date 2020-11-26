@@ -14,7 +14,8 @@ namespace EasyStory.API.Domain.Models
         public User User { get; set; }
 
         public List<PostHashtag> PostHashtags { get; set; }
-        
+        public IList<Bookmark> Posts { get; set; } = new List<Bookmark>();
+
         public IList<Comment> Comments { get; set; } = new List<Comment>();
     }
 }

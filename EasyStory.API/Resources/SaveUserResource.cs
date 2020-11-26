@@ -18,9 +18,10 @@ namespace EasyStory.API.Resources
         [MaxLength(30)]
         public string Password { get; set; }
         [Required]
-        public int AccountBalance { get; set; }
+        [MaxLength(30)]
+        public string FirstName { get; set; }
         [Required]
-        public int SubscriptionPrice { get; set; }
-
+        [MaxLength(30)]
+        public string LastName { get; set; }
     }
 }

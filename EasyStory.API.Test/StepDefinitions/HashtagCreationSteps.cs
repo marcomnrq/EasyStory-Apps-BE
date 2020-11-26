@@ -14,8 +14,6 @@ namespace EasyStory.API.Test.StepDefinitions
     [Binding]
     public  class HashtagCreationSteps : IClassFixture<WebApplicationFactory<TestStartup>>
     {
-        // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
-
         private WebApplicationFactory<TestStartup> _factory;
         private HttpClient _client { get; set; }
         protected HttpResponseMessage Response { get; set; }
@@ -27,9 +25,8 @@ namespace EasyStory.API.Test.StepDefinitions
             _factory = factory;
         }
 
-
-        [Given(@"I am a client")]
-        public void GivenIAmAClient()
+        [Given(@"I am a user in the application")]
+        public void GivenIAmAUserInTheApplication()
         {
             _client = _factory.CreateClient(new WebApplicationFactoryClientOptions
             {
@@ -37,21 +34,22 @@ namespace EasyStory.API.Test.StepDefinitions
             });
         }
 
-        [When(@"I make a post request to '(.*)' with the following data '(.*)'")]
-        public virtual async Task WhenIMakeAPostRequestToWithTheFollowingData(string resourceEndPoint, string postDataJson)
+
+        [When(@"I make a post hashtag request to '(.*)' with the following data '(.*)'")]
+        public async Task WhenIMakeAPostHashtagRequestToWithTheFollowingData(string resourceEndPoint, string postDataJson)
         {
             var postRelativeUri = new Uri(resourceEndPoint, UriKind.Relative);
             var content = new StringContent(postDataJson, Encoding.UTF8, "application/json");
             Response = await _client.PostAsync(postRelativeUri, content).ConfigureAwait(false);
-
         }
 
-        [Then(@"the response status code is '(.*)'")]
-        public void ThenTheResponseStatusCodeIs(int statusCode)
+        [Then(@"the status response code is '(.*)'")]
+        public void ThenTheStatusResponseCodeIs(int statusCode)
         {
             var expectedStatusCode = (HttpStatusCode)statusCode;
             Assert.Equal(expectedStatusCode, Response.StatusCode);
         }
+
 
     }
 }
