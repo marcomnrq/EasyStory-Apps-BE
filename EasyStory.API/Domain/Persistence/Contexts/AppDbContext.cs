@@ -44,7 +44,7 @@ namespace EasyStory.API.Domain.Persistence.Contexts
             builder.Entity<Comment>().ToTable("Comments");
             builder.Entity<Comment>().HasKey(p => p.Id);
             builder.Entity<Comment>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Comment>().Property(p => p.Content).IsRequired().HasMaxLength(30);
+            builder.Entity<Comment>().Property(p => p.Content).IsRequired();
             builder.Entity<Comment>().Property(p => p.PostId).IsRequired();
             builder.Entity<Comment>().Property(p => p.UserId).IsRequired();
 
@@ -66,11 +66,11 @@ namespace EasyStory.API.Domain.Persistence.Contexts
             builder.Entity<Post>().Property(p => p.Id)
                 .IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Post>().Property(p => p.Title)
-                .IsRequired().HasMaxLength(30);
+                .IsRequired();
             builder.Entity<Post>().Property(p => p.Description)
-                .IsRequired().HasMaxLength(60);
+                .IsRequired();
             builder.Entity<Post>().Property(p => p.Content)
-                .IsRequired().HasMaxLength(80);
+                .IsRequired();
             builder.Entity<Post>()
                 .HasMany(p => p.Comments)
                 .WithOne(p => p.Post)

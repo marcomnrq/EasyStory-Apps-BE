@@ -104,10 +104,11 @@ namespace EasyStory.API.Services
             return subscribed;
         }
 
-        public Task<IEnumerable<User>> ListByUserIdAsync(long postId)
+        public async Task<IEnumerable<User>> ListByUserIdAsync(long userId)
         {
-            // para implementar esta sección se necesita la implementación del servicio  de user
-            throw new NotImplementedException();
+            var user = await _subscriptionRepository.ListBySubscribedIdAsync(userId);
+            var subscriber = user.Select(p => p.User).ToList();
+            return subscriber;
         }
 
         public async Task<UserResponse> SaveUserAsync(User user)

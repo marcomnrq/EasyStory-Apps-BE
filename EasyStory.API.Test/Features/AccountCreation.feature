@@ -5,7 +5,7 @@
 
 Scenario: Account was created
 Given I am a client
-When I make a post request to 'api/users' with the following data '{ "Username" : "moonloght", "Email" : "arrob@.com", "Password" : "easysstoryy", "FirstName" : "Gonzalo", "LastName" : "nosexdxd"}'
+When I make a post request to 'api/users' with the following data '{ "Username" : "disney", "Email" : "disney@.com", "Password" : "easysstoryy", "FirstName" : "Gonzalo", "LastName" : "nosexdxd"}'
 Then the response status code is '200'
 
 Scenario: Account could not be created

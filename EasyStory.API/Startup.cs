@@ -114,7 +114,7 @@ namespace EasyStory.API
             //CORS configuration
             app.UseCors(options =>
             {
-                options.WithOrigins("htpp://localhost:8080");
+                options.WithOrigins("*");
                 options.AllowAnyMethod();
                 options.AllowAnyHeader();
             });

@@ -113,9 +113,9 @@ this.ScenarioInitialize(scenarioInfo);
 testRunner.Given("I am a client", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
-testRunner.When("I make a post request to \'api/users\' with the following data \'{ \"Username\" : \"moo" +
-                        "nloght\", \"Email\" : \"arrob@.com\", \"Password\" : \"easysstoryy\", \"FirstName\" : \"Gonz" +
-                        "alo\", \"LastName\" : \"nosexdxd\"}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.When("I make a post request to \'api/users\' with the following data \'{ \"Username\" : \"dis" +
+                        "ney\", \"Email\" : \"disney@.com\", \"Password\" : \"easysstoryy\", \"FirstName\" : \"Gonzal" +
+                        "o\", \"LastName\" : \"nosexdxd\"}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
 testRunner.Then("the response status code is \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
