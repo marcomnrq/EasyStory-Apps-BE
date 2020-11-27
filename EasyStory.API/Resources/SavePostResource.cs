@@ -11,13 +11,10 @@ namespace EasyStory.API.Resources
     public class SavePostResource
     {
         [Required]
-        [MaxLength(30)]
         public string Title { get; set; }
         [Required]
-        [MaxLength(60)]
         public string Description { get; set; }
         [Required]
-        [MaxLength(80)]
         public string Content { get; set; }
         
     }

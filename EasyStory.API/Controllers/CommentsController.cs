@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace EasyStory.API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Produces("application/json")]
     [Route("api/")]
     public class CommentsController : ControllerBase
@@ -103,6 +104,7 @@ namespace EasyStory.API.Controllers
             Tags = new[] { "Comments" }
         )]
         [SwaggerResponse(200, "Comment was created", typeof(CommentResource))]
+        [AllowAnonymous]
         [HttpPost("users/{userId}/posts/{postId}/comments")]
         public async Task<IActionResult> PostAsync([FromBody] SaveCommentResource resource, long userId, long postId)
         {

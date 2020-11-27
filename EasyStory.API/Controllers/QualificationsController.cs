@@ -15,6 +15,7 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace EasyStory.API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Produces("application/json")]
     [Route("api")]
     public class QualificationsController : ControllerBase
@@ -80,6 +81,7 @@ namespace EasyStory.API.Controllers
             OperationId = "GetQualificationByUserIdAndPostId"
         )]
         [SwaggerResponse(200, "List of Qualifications for a User and Post", typeof(IEnumerable<QualificationResource>))]
+        [AllowAnonymous]
         [HttpGet("users/{userId}/posts/{postId}/qualifications")]
         public async Task<IActionResult> GetQualificationByUserIdAndPostId(long userId, long postId)
         {

@@ -15,6 +15,7 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace EasyStory.API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Produces("application/json")]
     [Route("api/")]
     public class SubscriptionsController : ControllerBase
@@ -61,11 +62,27 @@ namespace EasyStory.API.Controllers
         }
 
         [SwaggerOperation(
+            Summary = "List all users of a Writer Subscription",
+            Description = "List of users of a Writer Subscription",
+            OperationId = "ListAllUsersOfWriterSubscription"
+        )]
+        [SwaggerResponse(200, "List of Users for a Writer Subscription", typeof(UserResource))]
+        [HttpGet("users/{userId}/subscribers")]
+        public async Task<IEnumerable<UserResource>> GetAllBySubscribedIdAsync(long userId)
+        {
+
+            var users = await _userService.ListByUserIdAsync(userId);
+            var resources = _mapper.Map<IEnumerable<User>, IEnumerable<UserResource>>(users);
+            return resources;
+        }
+
+        [SwaggerOperation(
             Summary = "Get Subscription by UserId And SubscribedId",
             Description = "Get Subscription by UserId And SubscribedId",
             OperationId = "GetSubscriptionByUserIdAndSubscribedId"
         )]
         [SwaggerResponse(200, "List of Subscriptions for a User and Subscribed", typeof(IEnumerable<SubscriptionResource>))]
+        [AllowAnonymous]
         [HttpGet("users/{userId}/subscriptions/{subscribedId}")]
         public async Task<IActionResult> GetSubscriptionByUserIdAndSubscribedId(long userId, long subscribedId)
         {

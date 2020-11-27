@@ -56,8 +56,8 @@ namespace EasyStory.API.Controllers
         public async Task<IEnumerable<PostResource>> GetAllByHashtagIdAsync(long hashtagId)
         {
             var posts = await _postService.ListByHashtagIdAsync(hashtagId);
-                var resources = _mapper.Map<IEnumerable<Post>, IEnumerable<PostResource>>(posts);
-                return resources;
+            var resources = _mapper.Map<IEnumerable<Post>, IEnumerable<PostResource>>(posts);
+            return resources;
             
         }
 

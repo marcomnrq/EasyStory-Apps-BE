@@ -1,5 +1,6 @@
 ﻿using EasyStory.API.Domain.Persistence.Contexts;
 using EasyStory.API.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +32,7 @@ namespace EasyStory.API
             {
                 options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
             });
+
             // Do not add custom services here
         }
 

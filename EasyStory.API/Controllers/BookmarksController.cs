@@ -16,7 +16,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace EasyStory.API.Controllers
 {
-
+    [Authorize]
     [ApiController]
     [Produces("application/json")]
     [Route("api/")]
@@ -42,6 +42,7 @@ namespace EasyStory.API.Controllers
             OperationId = "GetBookmarksById"
         )]
         [SwaggerResponse(200, "Bookmark was found", typeof(PostResource))]
+        [AllowAnonymous]
         [HttpGet("users/{userId}/bookmarks")]
         public async Task<IEnumerable<PostResource>> GetAllByUserIdAsync(long userId)
         {
@@ -59,6 +60,7 @@ namespace EasyStory.API.Controllers
             OperationId = "GetBoomarkByUserIdAndPostId"
         )]
         [SwaggerResponse(200, "List of Bookmarks for a User and Post", typeof(IEnumerable<BookmarkResource>))]
+        [AllowAnonymous]
         [HttpGet("users/{userId}/posts/{postId}/bookmarks")]
         public async Task<IActionResult> GetBookmarkByUserIdAndPostId(long userId, long postId)
         {

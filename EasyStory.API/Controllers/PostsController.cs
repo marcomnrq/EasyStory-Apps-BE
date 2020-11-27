@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 namespace EasyStory.API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Produces("application/json")]
     [Route("api/")]
     public class PostsController:ControllerBase
@@ -56,6 +57,7 @@ namespace EasyStory.API.Controllers
             return resources;
         }
         [SwaggerResponse(200, "Post was found", typeof(PostResource))]
+        [AllowAnonymous]
         [HttpGet("posts/{postId}")]
         public async Task<IActionResult> GetPostById(long postId)
         {
